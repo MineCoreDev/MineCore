@@ -3,8 +3,9 @@ using MineCore.Events;
 
 namespace MineCore
 {
-    public interface IServiceProvider
+    public interface IMineCoreServiceProvider
     {
+        string ServiceName { get; }
         event EventHandler<ServiceProviderEventArgs> ServiceEnabled;
         event EventHandler<ServiceProviderEventArgs> ServiceDisabled;
     }

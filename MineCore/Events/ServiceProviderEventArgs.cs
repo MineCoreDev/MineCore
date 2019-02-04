@@ -4,9 +4,9 @@ namespace MineCore.Events
 {
     public class ServiceProviderEventArgs : EventArgs
     {
-        public IServiceProvider ServiceProvider { get; }
+        public IMineCoreServiceProvider ServiceProvider { get; }
 
-        public ServiceProviderEventArgs(IServiceProvider provider)
+        public ServiceProviderEventArgs(IMineCoreServiceProvider provider)
         {
             ServiceProvider = provider;
         }

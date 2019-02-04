@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineCore", "MineCore\MineCore.csproj", "{3D4C5AB1-0F5C-45BC-859A-35D5C96C8D32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineCore.Tests", "MineCore.Tests\MineCore.Tests.csproj", "{7AD0EAB3-4766-4F2E-A0E6-698AD99C988B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{3D4C5AB1-0F5C-45BC-859A-35D5C96C8D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D4C5AB1-0F5C-45BC-859A-35D5C96C8D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D4C5AB1-0F5C-45BC-859A-35D5C96C8D32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD0EAB3-4766-4F2E-A0E6-698AD99C988B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD0EAB3-4766-4F2E-A0E6-698AD99C988B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD0EAB3-4766-4F2E-A0E6-698AD99C988B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD0EAB3-4766-4F2E-A0E6-698AD99C988B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
