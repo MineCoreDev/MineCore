@@ -10,6 +10,8 @@ namespace MineCore.Tests
         public class TestService : IMineCoreServiceProvider
         {
             public string ServiceName => "TestService";
+            public Type[] Dependencies => new Type[0];
+
             public event EventHandler<ServiceProviderEventArgs> ServiceEnabled;
             public event EventHandler<ServiceProviderEventArgs> ServiceDisabled;
 
