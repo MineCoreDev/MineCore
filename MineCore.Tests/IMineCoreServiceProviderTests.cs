@@ -1,5 +1,6 @@
 using System;
 using MineCore.Events;
+using MineCore.Models;
 using NUnit.Framework;
 
 namespace MineCore.Tests
@@ -15,12 +16,12 @@ namespace MineCore.Tests
             public event EventHandler<ServiceProviderEventArgs> ServiceEnabled;
             public event EventHandler<ServiceProviderEventArgs> ServiceDisabled;
 
-            internal void OnServiceEnabled(object sender, ServiceProviderEventArgs args)
+            public void OnServiceEnabled(object sender, ServiceProviderEventArgs args)
             {
                 ServiceEnabled?.Invoke(sender, args);
             }
 
-            internal void OnServiceDisabled(object sender, ServiceProviderEventArgs args)
+            public void OnServiceDisabled(object sender, ServiceProviderEventArgs args)
             {
                 ServiceDisabled?.Invoke(sender, args);
             }

@@ -1,4 +1,5 @@
 using System;
+using MineCore.Models;
 
 namespace MineCore.Events
 {
