@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using MineCore.Events;
+using MineCore.Extensions;
 using MineCore.Models;
 using MineCore.Platforms.Enums;
 
@@ -13,6 +15,7 @@ namespace MineCore.Platforms
         private readonly List<IMineCoreServiceProvider> _services = new List<IMineCoreServiceProvider>();
 
         public IMineCoreServiceProvider[] ServiceProviders => _services.ToArray();
+        public string ExternalServiceFolderPath => "plugins";
 
         public event EventHandler<ServiceProviderManagerEventArgs> LoadInternalServices;
         public event EventHandler<ServiceProviderManagerEventArgs> UnLoadInternalServices;
@@ -42,7 +45,40 @@ namespace MineCore.Platforms
 
         public virtual void LoadingExternalServices()
         {
-            throw new NotImplementedException();
+            string path = $"{Environment.CurrentDirectory}/{ExternalServiceFolderPath}";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            
+            DirectoryInfo info = new DirectoryInfo(path);
+            FileInfo[] files = info.GetFiles()
+                .Where(file => file.Extension == ExtensionConstants.PackFileExtension).ToArray();
+            Assembly[] assemblies = files.Select(f => Assembly.LoadFile(f.FullName)).ToArray();
+            Type[][] types = assemblies
+                .Select(asm => asm.GetTypes()
+                    .Where(type => type.GetInterfaces()
+                        .Any(t => t == typeof(IMineCoreServiceProvider) &&
+                                  type.GetCustomAttributes(typeof(ServerSideServiceAttribute), false)
+                                      .Length > 0)).ToArray()).ToArray();
+            List<IMineCoreServiceProvider> externalServices = new List<IMineCoreServiceProvider>();
+            foreach (Type[] arr in types)
+            {
+                IMineCoreServiceProvider[] providers = arr.Select(type =>
+                {
+                    IMineCoreServiceProvider provider = (IMineCoreServiceProvider) Activator.CreateInstance(type);
+                    provider.OnServiceEnabled(this, new ServiceProviderEventArgs(provider));
+
+                    return provider;
+                }).ToArray();
+                
+                externalServices.AddRange(providers);
+            }
+
+            IMineCoreServiceProvider[] builded = externalServices.ToArray();
+            _services.AddRange(builded);
+            
+            OnLoadExternalServices(this, new ServiceProviderManagerEventArgs(builded));
         }
 
         public virtual void UnloadingInternalServices()
