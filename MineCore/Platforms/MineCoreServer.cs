@@ -12,9 +12,10 @@ namespace MineCore.Platforms
 {
     public class MineCoreServer : IServerInterface
     {
-        private readonly List<IMineCoreServiceProvider> _services = new List<IMineCoreServiceProvider>();
-
-        public IMineCoreServiceProvider[] ServiceProviders => _services.ToArray();
+        private readonly List<IMineCoreServiceProvider> _internalServices = new List<IMineCoreServiceProvider>();
+        private readonly List<IMineCoreServiceProvider> _externalServices = new List<IMineCoreServiceProvider>();
+        
+        public IMineCoreServiceProvider[] ServiceProviders => _internalServices.ToArray();
         public string ExternalServiceFolderPath => "plugins";
 
         public event EventHandler<ServiceProviderManagerEventArgs> LoadInternalServices;
