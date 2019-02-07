@@ -14,8 +14,9 @@ namespace MineCore.Platforms
     {
         private readonly List<IMineCoreServiceProvider> _internalServices = new List<IMineCoreServiceProvider>();
         private readonly List<IMineCoreServiceProvider> _externalServices = new List<IMineCoreServiceProvider>();
-        
-        public IMineCoreServiceProvider[] ServiceProviders => _internalServices.ToArray();
+
+        // TODO Cache Data
+        public IMineCoreServiceProvider[] ServiceProviders => _internalServices.Concat(_externalServices).ToArray();
         public string ExternalServiceFolderPath => "plugins";
 
         public event EventHandler<ServiceProviderManagerEventArgs> LoadInternalServices;
@@ -23,6 +24,7 @@ namespace MineCore.Platforms
         public event EventHandler<ServiceProviderManagerEventArgs> LoadExternalServices;
         public event EventHandler<ServiceProviderManagerEventArgs> UnLoadExternalServices;
 
+        // TODO Dependencies
         public virtual void LoadingInternalServices()
         {
             Assembly assembly = this.GetType().Assembly;
@@ -39,19 +41,20 @@ namespace MineCore.Platforms
                 return provider;
             }).ToArray();
 
-            _services.AddRange(providers);
+            _internalServices.AddRange(providers);
 
             OnLoadInternalServices(this, new ServiceProviderManagerEventArgs(providers));
         }
 
+        // TODO Dependencies
         public virtual void LoadingExternalServices()
         {
-            string path = $"{Environment.CurrentDirectory}/{ExternalServiceFolderPath}";
+            string path = Path.Combine(Environment.CurrentDirectory, ExternalServiceFolderPath);
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-            
+
             DirectoryInfo info = new DirectoryInfo(path);
             FileInfo[] files = info.GetFiles()
                 .Where(file => file.Extension == ExtensionConstants.PackFileExtension).ToArray();
@@ -72,24 +75,38 @@ namespace MineCore.Platforms
 
                     return provider;
                 }).ToArray();
-                
+
                 externalServices.AddRange(providers);
             }
 
             IMineCoreServiceProvider[] builded = externalServices.ToArray();
-            _services.AddRange(builded);
-            
+            _externalServices.AddRange(builded);
+
             OnLoadExternalServices(this, new ServiceProviderManagerEventArgs(builded));
         }
 
         public virtual void UnloadingInternalServices()
         {
-            throw new NotImplementedException();
+            foreach (IMineCoreServiceProvider service in _internalServices)
+            {
+                service.OnServiceDisabled(this, new ServiceProviderEventArgs(service));
+            }
+
+            OnUnLoadInternalServices(this, new ServiceProviderManagerEventArgs(_internalServices.ToArray()));
+
+            _internalServices.Clear();
         }
 
         public virtual void UnloadingExternalServices()
         {
-            throw new NotImplementedException();
+            foreach (IMineCoreServiceProvider service in _externalServices)
+            {
+                service.OnServiceDisabled(this, new ServiceProviderEventArgs(service));
+            }
+
+            OnUnLoadExternalServices(this, new ServiceProviderManagerEventArgs(_externalServices.ToArray()));
+
+            _externalServices.Clear();
         }
 
         public virtual StartResult StartServer(params string[] args)
