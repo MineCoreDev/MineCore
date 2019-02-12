@@ -24,10 +24,9 @@ namespace MineCore.Platforms
         public event EventHandler<ServiceProviderManagerEventArgs> LoadExternalServices;
         public event EventHandler<ServiceProviderManagerEventArgs> UnLoadExternalServices;
 
-        // TODO Dependencies
         public virtual void LoadingInternalServices()
         {
-            Assembly assembly = this.GetType().Assembly;
+            Assembly assembly = GetType().Assembly;
             Type[] types = assembly.GetTypes()
                 .Where(type => type.GetInterfaces()
                     .Any(t => t == typeof(IMineCoreServiceProvider) &&

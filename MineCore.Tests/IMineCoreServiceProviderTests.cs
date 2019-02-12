@@ -15,6 +15,7 @@ namespace MineCore.Tests
 
             public event EventHandler<ServiceProviderEventArgs> ServiceEnabled;
             public event EventHandler<ServiceProviderEventArgs> ServiceDisabled;
+            public event EventHandler<ServiceProviderEventArgs> ServiceDependentResolution;
 
             public void OnServiceEnabled(object sender, ServiceProviderEventArgs args)
             {
@@ -24,6 +25,11 @@ namespace MineCore.Tests
             public void OnServiceDisabled(object sender, ServiceProviderEventArgs args)
             {
                 ServiceDisabled?.Invoke(sender, args);
+            }
+
+            public void OnServiceDependentResolution(object sender, ServiceProviderEventArgs args)
+            {
+                ServiceDependentResolution.Invoke(sender, args);
             }
         }
 

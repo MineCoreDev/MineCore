@@ -13,7 +13,6 @@ namespace MineCore.Models
         event EventHandler<ServiceProviderManagerEventArgs> LoadExternalServices;
         event EventHandler<ServiceProviderManagerEventArgs> UnLoadExternalServices;
 
-
         void LoadingInternalServices();
         void LoadingExternalServices();
 
