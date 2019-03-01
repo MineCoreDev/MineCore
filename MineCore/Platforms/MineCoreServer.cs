@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,17 +8,24 @@ using MineCore.Events;
 using MineCore.Extensions;
 using MineCore.Models;
 using MineCore.Platforms.Enums;
+using NLog;
 
 namespace MineCore.Platforms
 {
     public class MineCoreServer : IServerInterface
     {
-        private readonly List<IMineCoreServiceProvider> _internalServices = new List<IMineCoreServiceProvider>();
-        private readonly List<IMineCoreServiceProvider> _externalServices = new List<IMineCoreServiceProvider>();
+        public readonly static ILogger Logger = LogManager.GetCurrentClassLogger();
 
-        // TODO Cache Data
-        public IMineCoreServiceProvider[] ServiceProviders => _internalServices.Concat(_externalServices).ToArray();
-        public string ExternalServiceFolderPath => "plugins";
+        private readonly ConcurrentDictionary<string, IMineCoreServiceProvider> _internalServices =
+            new ConcurrentDictionary<string, IMineCoreServiceProvider>();
+
+        private readonly ConcurrentDictionary<string, IMineCoreServiceProvider> _externalServices =
+            new ConcurrentDictionary<string, IMineCoreServiceProvider>();
+
+        public IMineCoreServiceProvider[] ServiceProviders =>
+            _internalServices.Values.Concat(_externalServices.Values).ToArray();
+
+        public string ExternalServiceFolderPath => "extensions";
 
         public event EventHandler<ServiceProviderManagerEventArgs> LoadInternalServices;
         public event EventHandler<ServiceProviderManagerEventArgs> UnLoadInternalServices;
@@ -32,17 +40,23 @@ namespace MineCore.Platforms
                     .Any(t => t == typeof(IMineCoreServiceProvider) &&
                               type.GetCustomAttributes(typeof(ServerSideServiceAttribute), false)
                                   .Length > 0)).ToArray();
-            IMineCoreServiceProvider[] providers = types.Select(t =>
+
+            foreach (Type type in types)
             {
-                IMineCoreServiceProvider provider = (IMineCoreServiceProvider) Activator.CreateInstance(t);
-                provider.OnServiceEnabled(this, new ServiceProviderEventArgs(provider));
+                try
+                {
+                    IMineCoreServiceProvider provider =
+                        (IMineCoreServiceProvider) Activator.CreateInstance(type);
+                    LoadingService(provider, _internalServices);
+                }
+                catch (InvalidCastException e)
+                {
+                    Logger.Warn(e);
+                }
+            }
 
-                return provider;
-            }).ToArray();
-
-            _internalServices.AddRange(providers);
-
-            OnLoadInternalServices(this, new ServiceProviderManagerEventArgs(providers));
+            OnLoadInternalServices(this,
+                new ServiceProviderManagerEventArgs(_internalServices.Values.ToArray()));
         }
 
         // TODO Dependencies
@@ -64,53 +78,89 @@ namespace MineCore.Platforms
                         .Any(t => t == typeof(IMineCoreServiceProvider) &&
                                   type.GetCustomAttributes(typeof(ServerSideServiceAttribute), false)
                                       .Length > 0)).ToArray()).ToArray();
-            List<IMineCoreServiceProvider> externalServices = new List<IMineCoreServiceProvider>();
+
             foreach (Type[] arr in types)
             {
-                IMineCoreServiceProvider[] providers = arr.Select(type =>
+                foreach (Type type in arr)
                 {
-                    IMineCoreServiceProvider provider = (IMineCoreServiceProvider) Activator.CreateInstance(type);
-                    provider.OnServiceEnabled(this, new ServiceProviderEventArgs(provider));
-
-                    return provider;
-                }).ToArray();
-
-                externalServices.AddRange(providers);
+                    try
+                    {
+                        IMineCoreServiceProvider provider =
+                            (IMineCoreServiceProvider) Activator.CreateInstance(type);
+                        LoadingService(provider, _externalServices);
+                    }
+                    catch (InvalidCastException e)
+                    {
+                        Logger.Warn(e);
+                    }
+                }
             }
 
-            IMineCoreServiceProvider[] builded = externalServices.ToArray();
-            _externalServices.AddRange(builded);
+            OnLoadExternalServices(this,
+                new ServiceProviderManagerEventArgs(_externalServices.Values.ToArray()));
+        }
 
-            OnLoadExternalServices(this, new ServiceProviderManagerEventArgs(builded));
+        private void LoadingService(IMineCoreServiceProvider provider,
+            ConcurrentDictionary<string, IMineCoreServiceProvider> services)
+        {
+            Queue<IMineCoreServiceProvider> queue = new Queue<IMineCoreServiceProvider>();
+            queue.Enqueue(provider);
+
+            while (queue.TryDequeue(out IMineCoreServiceProvider p))
+            {
+                if (!services.ContainsKey(p.ServiceName))
+                {
+                    services.TryAdd(p.ServiceName, p);
+                    foreach (Type type in p.Dependencies)
+                    {
+                        try
+                        {
+                            IMineCoreServiceProvider dp =
+                                (IMineCoreServiceProvider) Activator.CreateInstance(type);
+                            if (!services.ContainsKey(dp.ServiceName))
+                            {
+                                dp.OnServiceEnabled(this, new ServiceProviderEventArgs(dp));
+                                queue.Enqueue(dp);
+                            }
+                        }
+                        catch (InvalidCastException e)
+                        {
+                            Logger.Warn(e);
+                        }
+                    }
+                }
+            }
+
+            provider.OnServiceEnabled(this, new ServiceProviderEventArgs(provider));
         }
 
         public virtual void UnloadingInternalServices()
         {
-            foreach (IMineCoreServiceProvider service in _internalServices)
+            foreach (IMineCoreServiceProvider service in _internalServices.Values)
             {
                 service.OnServiceDisabled(this, new ServiceProviderEventArgs(service));
             }
 
-            OnUnLoadInternalServices(this, new ServiceProviderManagerEventArgs(_internalServices.ToArray()));
-
+            OnUnLoadInternalServices(this,
+                new ServiceProviderManagerEventArgs(_internalServices.Values.ToArray()));
             _internalServices.Clear();
         }
 
         public virtual void UnloadingExternalServices()
         {
-            foreach (IMineCoreServiceProvider service in _externalServices)
+            foreach (IMineCoreServiceProvider service in _externalServices.Values)
             {
                 service.OnServiceDisabled(this, new ServiceProviderEventArgs(service));
             }
 
-            OnUnLoadExternalServices(this, new ServiceProviderManagerEventArgs(_externalServices.ToArray()));
-
+            OnUnLoadExternalServices(this,
+                new ServiceProviderManagerEventArgs(_externalServices.Values.ToArray()));
             _externalServices.Clear();
         }
 
         public virtual StartResult StartServer(params string[] args)
         {
-            throw new NotImplementedException();
+            
         }
 
         public virtual StopResult StopServer()
