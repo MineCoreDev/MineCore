@@ -160,7 +160,18 @@ namespace MineCore.Platforms
 
         public virtual StartResult StartServer(params string[] args)
         {
-            
+            try
+            {
+                LoadingInternalServices();
+                LoadingExternalServices();
+
+                return StartResult.Started;
+            }
+            catch (Exception e)
+            {
+                Logger.Fatal(e);
+                return StartResult.Error;
+            }
         }
 
         public virtual StopResult StopServer()
