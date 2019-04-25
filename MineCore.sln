@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineCore", "MineCore\MineCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineCore.Tests", "MineCore.Tests\MineCore.Tests.csproj", "{7AD0EAB3-4766-4F2E-A0E6-698AD99C988B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineCore.Server", "MineCore.Server\MineCore.Server.csproj", "{E714D22C-6AB9-47C4-80F0-BCFA4E6015A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{7AD0EAB3-4766-4F2E-A0E6-698AD99C988B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AD0EAB3-4766-4F2E-A0E6-698AD99C988B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AD0EAB3-4766-4F2E-A0E6-698AD99C988B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E714D22C-6AB9-47C4-80F0-BCFA4E6015A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E714D22C-6AB9-47C4-80F0-BCFA4E6015A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E714D22C-6AB9-47C4-80F0-BCFA4E6015A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E714D22C-6AB9-47C4-80F0-BCFA4E6015A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

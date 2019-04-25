@@ -1,10 +1,9 @@
 using System;
-using MineCore.Datas;
 using MineCore.Events.Services;
 
 namespace MineCore.Services
 {
-    public interface IServiceContainer : IName
+    public interface IServiceContainer
     {
         event EventHandler<ServiceLoadEventArgs> LoadServiceEvent;
         event EventHandler<ServiceUnloadEventArgs> UnLoadServiceEvent;
