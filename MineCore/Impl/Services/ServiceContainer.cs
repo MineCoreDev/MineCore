@@ -4,8 +4,10 @@ using System.Linq;
 using System.Reflection;
 using MineCore.Events;
 using MineCore.Events.Services;
+using MineCore.Languages;
 using MineCore.Services;
 using MineCore.Utils;
+using NLog;
 using Optional;
 
 namespace MineCore.Impl.Services
@@ -13,6 +15,8 @@ namespace MineCore.Impl.Services
     public class ServiceContainer : IServiceContainer
     {
         private Dictionary<Guid, IMineCoreService> _services;
+
+        public Logger ContainerLogger { get; } = LogManager.GetCurrentClassLogger();
 
         public event EventHandler<ServiceLoadEventArgs> LoadServiceEvent;
         public event EventHandler<ServiceUnloadEventArgs> UnLoadServiceEvent;
@@ -100,10 +104,13 @@ namespace MineCore.Impl.Services
                 List<IMineCoreService> list = new List<IMineCoreService>();
                 Queue<Type> queue = new Queue<Type>();
                 queue.Enqueue(type);
+
+                ContainerLogger.Info(StringManager.GetString("minecore.dependencies.resolving", type.FullName));
+
                 while (queue.Count > 0)
                 {
                     Type t = queue.Dequeue();
-                    if (_services.ContainsKey(t.GUID))
+                    if (!_services.ContainsKey(t.GUID))
                     {
                         IMineCoreService service = (IMineCoreService) Activator.CreateInstance(t);
                         foreach (Type d in service.Dependencies)
@@ -112,16 +119,23 @@ namespace MineCore.Impl.Services
                         }
 
                         service.OnLoad();
+                        ContainerLogger.Debug(StringManager.GetString("minecore.dependencies.load",
+                            service.GetType().FullName));
                         list.Add(service);
                     }
                 }
 
+                list.Reverse();
                 foreach (IMineCoreService service in list)
                 {
                     service.OnEnable();
+                    ContainerLogger.Debug(StringManager.GetString("minecore.dependencies.enable",
+                        service.GetType().FullName));
                     LoadServiceEvent.CancelableInvoke(this, new ServiceLoadEventArgs(this, service));
                     _services.Add(service.GetType().GUID, service);
                 }
+
+                ContainerLogger.Debug(StringManager.GetString("minecore.dependencies.resolved", type.FullName));
 
                 return list.Count > 0;
             }

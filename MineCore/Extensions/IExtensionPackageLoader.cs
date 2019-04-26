@@ -1,12 +1,15 @@
 using System;
 using MineCore.Datas;
 using MineCore.Events.Extensions;
+using NLog;
 using Optional;
 
 namespace MineCore.Extensions
 {
     public interface IExtensionPackageLoader : IName
     {
+        Logger LoaderLogger { get; }
+
         event EventHandler<ExtensionPackageLoadEventArgs> LoadPackageEvent;
         event EventHandler<ExtensionPackageUnloadEventArgs> UnloadPackageEvent;
 

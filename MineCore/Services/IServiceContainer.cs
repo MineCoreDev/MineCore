@@ -1,11 +1,14 @@
 using System;
 using MineCore.Events.Services;
+using NLog;
 using Optional;
 
 namespace MineCore.Services
 {
     public interface IServiceContainer
     {
+        Logger ContainerLogger { get; }
+
         event EventHandler<ServiceLoadEventArgs> LoadServiceEvent;
         event EventHandler<ServiceUnloadEventArgs> UnLoadServiceEvent;
 
