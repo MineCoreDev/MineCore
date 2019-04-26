@@ -10,7 +10,7 @@ namespace MineCore.Server
     {
         public PlatformStartResult Start()
         {
-            return PlatformStartResult.Start;
+            return PlatformStartResult.Success;
         }
     }
 }

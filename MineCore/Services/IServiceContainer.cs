@@ -18,7 +18,6 @@ namespace MineCore.Services
         Option<T> GetService<T>(Guid guid) where T : IMineCoreService;
 
         bool LoadService(Type type);
-        bool LoadService(Guid type);
 
         bool UnloadService(Type type);
         bool UnloadService(Guid guid);

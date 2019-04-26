@@ -11,9 +11,9 @@
       <PackageReference Include="NLog" Version="4.6.2" />
       <PackageReference Include="Optional" Version="4.0.0" />
       <PackageReference Include="RakDotNet" Version="0.0.4-beta" />
+      <PackageReference Include="ReadLine" Version="2.0.1" />
       <PackageReference Include="SharpNoise" Version="0.12.0" />
       <PackageReference Include="SharpZipLib" Version="1.1.0" />
-      <PackageReference Include="Terminal.Gui" Version="0.21.0" />
       <PackageReference Include="YamlDotNet" Version="6.0.0" />
     </ItemGroup>
 
@@ -21,6 +21,10 @@
       <EmbeddedResource Update="Languages\Strings_ja-JP.resx">
         <Generator></Generator>
       </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Console\" />
     </ItemGroup>
 
 </Project>

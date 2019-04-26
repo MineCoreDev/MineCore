@@ -2,8 +2,8 @@
 {
     public enum PlatformStartResult
     {
-        Start,
-        Error,
-        Stop
+        Success,
+        Failed,
+        Started
     }
 }
