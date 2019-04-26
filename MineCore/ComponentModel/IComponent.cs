@@ -1,12 +1,13 @@
 using MineCore.Datas;
+using Optional;
 
 namespace MineCore.ComponentModel
 {
     public interface IComponent : IName
     {
         string NameSpace { get; }
-        
-        IComponentProperty<T> GetProperty<T>(string name);
+
+        Option<IComponentProperty<T>> GetProperty<T>(string name);
         void SetProperty<T>(string name, IComponentProperty<T> property);
     }
 }

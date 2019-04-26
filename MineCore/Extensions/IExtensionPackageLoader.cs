@@ -1,6 +1,7 @@
 using System;
 using MineCore.Datas;
 using MineCore.Events.Extensions;
+using Optional;
 
 namespace MineCore.Extensions
 {
@@ -12,8 +13,8 @@ namespace MineCore.Extensions
         void LoadPackages();
         void UnloadPackages();
 
-        IExtensionPackage GetPackage(Type type);
-        IExtensionPackage GetPackage(Guid guid);
+        Option<IExtensionPackage> GetPackage(Type type);
+        Option<IExtensionPackage> GetPackage(Guid guid);
 
         bool LoadPackage(Type type);
         bool LoadPackage(Guid type);

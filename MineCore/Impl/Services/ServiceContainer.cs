@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using MineCore.Events.Services;
 using MineCore.Services;
+using Optional;
 
 namespace MineCore.Impl.Services
 {
@@ -9,9 +13,13 @@ namespace MineCore.Impl.Services
         public event EventHandler<ServiceLoadEventArgs> LoadServiceEvent;
         public event EventHandler<ServiceUnloadEventArgs> UnLoadServiceEvent;
 
+        public ServiceContainerState ContainerState = ServiceContainerState.Initialized;
+
         public void LoadServices()
         {
-            throw new NotImplementedException();
+            Assembly asm = this.GetType().Assembly;
+            IEnumerable<Type> services = asm.GetTypes()
+                .Where((type) => type.GetInterfaces().Any(t => t == typeof(IMineCoreService)));
         }
 
         public void UnloadServices()
@@ -19,12 +27,22 @@ namespace MineCore.Impl.Services
             throw new NotImplementedException();
         }
 
-        public IMineCoreService GetService(Type type)
+        public Option<IMineCoreService> GetService(Type type)
         {
             throw new NotImplementedException();
         }
 
-        public IMineCoreService GetService(Guid guid)
+        public Option<IMineCoreService> GetService(Guid guid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Option<T> GetService<T>(Type type) where T : IMineCoreService
+        {
+            throw new NotImplementedException();
+        }
+
+        public Option<T> GetService<T>(Guid guid) where T : IMineCoreService
         {
             throw new NotImplementedException();
         }

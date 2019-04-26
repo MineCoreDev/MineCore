@@ -1,4 +1,5 @@
 using MineCore.Services;
+using MineCore.Utils;
 
 namespace MineCore.Events.Services
 {
@@ -9,6 +10,8 @@ namespace MineCore.Events.Services
         public ServiceLoadEventArgs(IServiceContainer container, IMineCoreService service)
             : base(container)
         {
+            service.ThrownOnArgNull(nameof(service));
+
             Service = service;
         }
     }

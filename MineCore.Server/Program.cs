@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Terminal.Gui;
 
 namespace MineCore.Server
 {
@@ -6,6 +9,8 @@ namespace MineCore.Server
     {
         static void Main(string[] args)
         {
+            ServerPlatform server = new ServerPlatform();
+            server.Start();
         }
     }
 }

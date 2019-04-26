@@ -9,6 +9,7 @@
       <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.4.0" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
       <PackageReference Include="NLog" Version="4.6.2" />
+      <PackageReference Include="Optional" Version="4.0.0" />
       <PackageReference Include="RakDotNet" Version="0.0.4-beta" />
       <PackageReference Include="SharpNoise" Version="0.12.0" />
       <PackageReference Include="SharpZipLib" Version="1.1.0" />
@@ -17,17 +18,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Languages\Strings_ja-JP.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Strings_ja-JP.resx</DependentUpon>
-      </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
       <EmbeddedResource Update="Languages\Strings_ja-JP.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Strings_ja-JP.Designer.cs</LastGenOutput>
+        <Generator></Generator>
       </EmbeddedResource>
     </ItemGroup>
 

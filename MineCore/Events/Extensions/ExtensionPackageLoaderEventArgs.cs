@@ -1,4 +1,5 @@
 using MineCore.Extensions;
+using MineCore.Utils;
 
 namespace MineCore.Events.Extensions
 {
@@ -8,6 +9,8 @@ namespace MineCore.Events.Extensions
 
         public ExtensionPackageLoaderEventArgs(IExtensionPackageLoader loader)
         {
+            loader.ThrownOnArgNull(nameof(loader));
+
             Loader = loader;
         }
     }
