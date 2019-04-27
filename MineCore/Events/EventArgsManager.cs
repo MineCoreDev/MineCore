@@ -9,7 +9,7 @@ namespace MineCore.Events
         {
             if (!args.IsCancel || !args.IsCancelable)
             {
-                hander.Invoke(sender, args);
+                hander?.Invoke(sender, args);
                 return true;
             }
 

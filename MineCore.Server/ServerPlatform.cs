@@ -16,8 +16,6 @@ namespace MineCore.Server
 
         public ServiceContainer ServiceContainer { get; private set; }
 
-        public MineCoreConsole Console { get; private set; }
-
         public PlatformStartResult Start()
         {
             StringManager.Init();
@@ -26,12 +24,7 @@ namespace MineCore.Server
             Thread.CurrentThread.Name = StringManager.GetString("minecore.thread.server");
 
             PlatformLogger.Info(StringManager.GetString("minecore.app.start"));
-
-            Console = new MineCoreConsole();
-            Console.StartWorker();
-
             PlatformLogger.Info(StringManager.GetString("minecore.service_container.start"));
-
             ServiceContainer = new ServiceContainer();
             ServiceContainer.LoadServices();
 

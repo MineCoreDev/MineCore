@@ -14,7 +14,7 @@ namespace MineCore.Impl.Services
 {
     public class ServiceContainer : IServiceContainer
     {
-        private Dictionary<Guid, IMineCoreService> _services;
+        private Dictionary<Guid, IMineCoreService> _services = new Dictionary<Guid, IMineCoreService>();
 
         public Logger ContainerLogger { get; } = LogManager.GetCurrentClassLogger();
 
@@ -99,7 +99,7 @@ namespace MineCore.Impl.Services
         {
             type.ThrownOnArgNull(nameof(type));
 
-            if (type.GetInterfaces().Any(t => t == typeof(IMineCoreService)))
+            if (type.GetInterfaces().Any(t => t == typeof(IMineCoreService)) && !type.IsAbstract && !type.IsInterface)
             {
                 List<IMineCoreService> list = new List<IMineCoreService>();
                 Queue<Type> queue = new Queue<Type>();
@@ -135,7 +135,7 @@ namespace MineCore.Impl.Services
                     _services.Add(service.GetType().GUID, service);
                 }
 
-                ContainerLogger.Debug(StringManager.GetString("minecore.dependencies.resolved", type.FullName));
+                ContainerLogger.Info(StringManager.GetString("minecore.dependencies.resolved", type.FullName));
 
                 return list.Count > 0;
             }
