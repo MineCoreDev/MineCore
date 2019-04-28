@@ -24,8 +24,10 @@ namespace MineCore.Server
             Thread.CurrentThread.Name = StringManager.GetString("minecore.thread.server");
 
             PlatformLogger.Info(StringManager.GetString("minecore.app.start"));
+
             PlatformLogger.Info(StringManager.GetString("minecore.service_container.start"));
             ServiceContainer = new ServiceContainer();
+            ServiceContainer.LoadPlatforms = typeof(ServerPlatformServiceAttribute);
             ServiceContainer.LoadServices();
 
             while (true)

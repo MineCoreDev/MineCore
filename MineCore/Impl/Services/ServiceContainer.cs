@@ -16,6 +16,8 @@ namespace MineCore.Impl.Services
     {
         private Dictionary<Guid, IMineCoreService> _services = new Dictionary<Guid, IMineCoreService>();
 
+        public Type LoadPlatforms { get; set; } = typeof(Attribute);
+
         public Logger ContainerLogger { get; } = LogManager.GetCurrentClassLogger();
 
         public event EventHandler<ServiceLoadEventArgs> LoadServiceEvent;
@@ -99,7 +101,8 @@ namespace MineCore.Impl.Services
         {
             type.ThrownOnArgNull(nameof(type));
 
-            if (type.GetInterfaces().Any(t => t == typeof(IMineCoreService)) && !type.IsAbstract && !type.IsInterface)
+            if (type.GetInterfaces().Any(t =>
+                t == typeof(IMineCoreService) && type.GetCustomAttributes(LoadPlatforms, true).Length > 0))
             {
                 List<IMineCoreService> list = new List<IMineCoreService>();
                 Queue<Type> queue = new Queue<Type>();
