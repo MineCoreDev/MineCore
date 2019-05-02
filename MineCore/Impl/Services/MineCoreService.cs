@@ -6,7 +6,7 @@ namespace MineCore.Impl.Services
 {
     public abstract class MineCoreService : IMineCoreService
     {
-        public string Name => GetType().FullName;
+        public virtual string Name => GetType().FullName;
         public virtual string Description { get; }
 
         public Logger ServiceLogger { get; } = LogManager.GetCurrentClassLogger();

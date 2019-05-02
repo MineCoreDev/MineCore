@@ -57,12 +57,7 @@ namespace MineCore.Impl.Services
         {
             type.ThrownOnArgNull(nameof(type));
 
-            if (_services.ContainsKey(type.GUID))
-            {
-                return _services[type.GUID].SomeNotNull();
-            }
-
-            return Option.None<IMineCoreService>();
+            return GetService(type.GUID);
         }
 
         public Option<IMineCoreService> GetService(Guid guid)
@@ -79,12 +74,7 @@ namespace MineCore.Impl.Services
         {
             type.ThrownOnArgNull(nameof(type));
 
-            if (_services.ContainsKey(type.GUID))
-            {
-                return ((T) _services[type.GUID]).SomeNotNull();
-            }
-
-            return Option.None<T>();
+            return GetService<T>(type.GUID);
         }
 
         public Option<T> GetService<T>(Guid guid) where T : IMineCoreService
@@ -150,12 +140,7 @@ namespace MineCore.Impl.Services
         {
             type.ThrownOnArgNull(nameof(type));
 
-            if (_services.ContainsKey(type.GUID))
-            {
-                return _services.Remove(type.GUID);
-            }
-
-            return false;
+            return UnloadService(type.GUID);
         }
 
         public bool UnloadService(Guid guid)

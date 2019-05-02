@@ -3,14 +3,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using MineCore.Console;
 using MineCore.Languages;
+using MineCore.Utils;
 
 namespace MineCore.Impl.Console
 {
     public class MineCoreConsole : IConsole
     {
-        public CancellationTokenSource CancellationToken { get; private set; }
-
-        public Task Worker { get; private set; }
+        private CancellationTokenSource _cancellationToken;
+        private Task _worker;
 
         public MineCoreConsole()
         {
@@ -19,23 +19,35 @@ namespace MineCore.Impl.Console
 
         public void StartWorker()
         {
-            CancellationToken = new CancellationTokenSource();
-            Worker = Task.Factory.StartNew(() =>
+            _cancellationToken = new CancellationTokenSource();
+            _worker = Task.Factory.StartNew(() =>
             {
                 while (true)
                 {
-                    if (CancellationToken.Token.IsCancellationRequested)
+                    if (_cancellationToken.Token.IsCancellationRequested)
                     {
                         break;
                     }
 
-                    ProcessCommand(ReadLine.Read(">"));
+                    ProcessCommand(ReadLine.Read("> "));
                 }
-            }, CancellationToken.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+            }, _cancellationToken.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
         }
 
         public void ProcessCommand(string cmd)
         {
+            cmd.ThrownOnArgNull(nameof(cmd));
+        }
+
+        public void Dispose()
+        {
+            if (_worker != null)
+            {
+                _cancellationToken.Cancel();
+                _cancellationToken = null;
+                _worker.Dispose();
+                _worker = null;
+            }
         }
     }
 }

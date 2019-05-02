@@ -1,6 +1,8 @@
-﻿namespace MineCore.Console
+﻿using System;
+
+namespace MineCore.Console
 {
-    public interface IConsole
+    public interface IConsole : IDisposable
     {
         void ProcessCommand(string cmd);
     }

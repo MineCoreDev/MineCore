@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MineCore.Console.Logging;
+using MineCore.Utils;
 using NLog.Config;
 using NLog.Layouts;
 using NLog.Targets;
@@ -10,6 +11,8 @@ namespace MineCore.Impl.Console.Logging
     {
         public LoggingConfiguration GetConfiguration(ILoggerConfig config)
         {
+            config.ThrownOnArgNull(nameof(config));
+
             LoggingConfiguration conf = new LoggingConfiguration();
 
             ColoredConsoleTarget target = new ColoredConsoleTarget()
@@ -28,6 +31,8 @@ namespace MineCore.Impl.Console.Logging
 
         private void AddRowColorRules(ColoredConsoleTarget target)
         {
+            target.ThrownOnArgNull(nameof(target));
+
             target.RowHighlightingRules.Add(new ConsoleRowHighlightingRule
             {
                 Condition = "level == LogLevel.Debug",
@@ -63,6 +68,8 @@ namespace MineCore.Impl.Console.Logging
 
         private void AddWordColorRules(ColoredConsoleTarget target)
         {
+            target.ThrownOnArgNull(nameof(target));
+
             target.WordHighlightingRules.Add(new ConsoleWordHighlightingRule
             {
                 Regex = "§0[^§\n]+",

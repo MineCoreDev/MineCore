@@ -11,8 +11,10 @@ namespace MineCore.Utils
 
         public static void ThrownOnArgNull(this object value, string fieldName)
         {
+            fieldName = fieldName ?? "arg";
+
             if (value.IsNull())
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(fieldName);
         }
     }
 }

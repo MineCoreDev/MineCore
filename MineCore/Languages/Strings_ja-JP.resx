@@ -135,6 +135,15 @@
   <data name="minecore.dependencies.resolving" xml:space="preserve">
     <value>{0}の依存関係を解決しています。</value>
   </data>
+  <data name="minecore.list.platform" xml:space="preserve">
+    <value>MCPE</value>
+  </data>
+  <data name="minecore.list.serverName.default" xml:space="preserve">
+    <value>MineCoreServer</value>
+  </data>
+  <data name="minecore.list.systemName" xml:space="preserve">
+    <value>MineCore</value>
+  </data>
   <data name="minecore.service_container.start" xml:space="preserve">
     <value>サービスコンテナを起動しています。</value>
   </data>

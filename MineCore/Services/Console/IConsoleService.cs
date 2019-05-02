@@ -4,8 +4,8 @@ using MineCore.Services;
 
 namespace MineCore.Impl.Services.Console
 {
-    public abstract class ConsoleService : MineCoreService
+    public interface IConsoleService : IMineCoreService
     {
-        public IConsole Console;
+        IConsole Console { get; }
     }
 }
