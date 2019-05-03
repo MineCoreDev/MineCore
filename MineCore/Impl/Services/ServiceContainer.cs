@@ -106,6 +106,7 @@ namespace MineCore.Impl.Services
                     if (!_services.ContainsKey(t.GUID))
                     {
                         IMineCoreService service = (IMineCoreService) Activator.CreateInstance(t);
+                        service.Container = this;
                         foreach (Type d in service.Dependencies)
                         {
                             queue.Enqueue(d);

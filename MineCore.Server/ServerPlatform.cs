@@ -12,14 +12,15 @@ namespace MineCore.Server
     public class ServerPlatform : ServiceContainer, IServerPlatform
     {
         public Logger PlatformLogger { get; } = LogManager.GetCurrentClassLogger();
-        public MineCoreLoggerConfig LoggerConfig { get; } = new MineCoreLoggerConfig();
+
+        public MineCoreConsole Console { get; private set; }
 
         public ServiceContainer ServiceContainer { get; private set; }
 
         public PlatformStartResult Start()
         {
             StringManager.Init();
-            LogManager.Configuration = new NLogConfigBuilder().GetConfiguration(LoggerConfig);
+            Console = new MineCoreConsole();
 
             Thread.CurrentThread.Name = StringManager.GetString("minecore.thread.server");
 
@@ -29,6 +30,9 @@ namespace MineCore.Server
             ServiceContainer = new ServiceContainer();
             ServiceContainer.LoadPlatforms = typeof(ServerPlatformServiceAttribute);
             ServiceContainer.LoadServices();
+
+            Console.StartWorker();
+
 
             while (true)
             {
