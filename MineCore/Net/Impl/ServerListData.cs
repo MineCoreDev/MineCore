@@ -1,8 +1,7 @@
 ﻿using MineCore.Languages;
-using MineCore.Net;
 using MineCore.Utils;
 
-namespace MineCore.Impl.Net
+namespace MineCore.Net.Impl
 {
     public class ServerListData : IServerListData
     {

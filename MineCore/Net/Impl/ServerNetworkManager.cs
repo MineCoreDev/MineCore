@@ -1,18 +1,21 @@
-﻿using System;
+﻿using System.Collections.Concurrent;
 using System.Net;
-using MineCore.Net;
+using MineCore.Entities;
 using MineCore.Utils;
 using NLog;
+using RakDotNet.Event.RakNetServerEvents;
 using RakDotNet.Minecraft;
 using RakDotNet.Minecraft.Event.MineCraftServerEvents;
 using RakDotNet.Minecraft.Packets;
 
-namespace MineCore.Impl.Net
+namespace MineCore.Net.Impl
 {
     public class ServerNetworkManager : IServerNetworkManager
     {
         private Logger _logger = LogManager.GetCurrentClassLogger();
         private MinecraftServer _server;
+
+        private ConcurrentDictionary<IPEndPoint, IPlayer> _players = new ConcurrentDictionary<IPEndPoint, IPlayer>();
 
         public ServerNetworkManager(IPEndPoint endPoint, IServerListData listData)
         {
@@ -21,6 +24,7 @@ namespace MineCore.Impl.Net
 
             _server = new MinecraftServer(endPoint);
             _server.ConnectPeerEvent += Server_ConnectPeerEvent;
+            _server.DisconnectPeerEvent += Server_DisconnectPeerEvent;
             UpdateServerList(listData);
         }
 
@@ -48,6 +52,10 @@ namespace MineCore.Impl.Net
         private void Server_ConnectPeerEvent(object sender, MineCraftServerConnectPeerEventArgs e)
         {
             e.Peer.HandleBatchPacket = HandleBatchPacket;
+        }
+
+        private void Server_DisconnectPeerEvent(object sender, ServerDisconnectPeerEventArgs e)
+        {
         }
 
         private void HandleBatchPacket(BatchPacket packet)

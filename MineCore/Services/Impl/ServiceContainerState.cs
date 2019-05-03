@@ -1,4 +1,4 @@
-﻿namespace MineCore.Impl.Services
+﻿namespace MineCore.Services.Impl
 {
     public enum ServiceContainerState
     {

@@ -5,12 +5,11 @@ using System.Reflection;
 using MineCore.Events;
 using MineCore.Events.Services;
 using MineCore.Languages;
-using MineCore.Services;
 using MineCore.Utils;
 using NLog;
 using Optional;
 
-namespace MineCore.Impl.Services
+namespace MineCore.Services.Impl
 {
     public class ServiceContainer : IServiceContainer
     {

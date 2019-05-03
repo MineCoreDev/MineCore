@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MineCore.Impl.Services
+namespace MineCore.Services.Impl
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class ServerPlatformServiceAttribute : Attribute

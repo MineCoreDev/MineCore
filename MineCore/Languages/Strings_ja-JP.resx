@@ -144,6 +144,9 @@
   <data name="minecore.list.systemName" xml:space="preserve">
     <value>MineCore</value>
   </data>
+  <data name="minecore.service_container.end" xml:space="preserve">
+    <value>サービスコンテナは正常に起動しました。</value>
+  </data>
   <data name="minecore.service_container.start" xml:space="preserve">
     <value>サービスコンテナを起動しています。</value>
   </data>

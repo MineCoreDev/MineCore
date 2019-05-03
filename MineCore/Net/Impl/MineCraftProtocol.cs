@@ -1,6 +1,4 @@
-﻿using MineCore.Net;
-
-namespace MineCore.Impl.Net
+﻿namespace MineCore.Net.Impl
 {
     public class MineCraftProtocol : IMineCraftProtocol
     {

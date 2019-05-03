@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using MineCore.Console.Logging;
-using MineCore.Utils;
+﻿using MineCore.Utils;
 using NLog.Config;
 using NLog.Layouts;
-using NLog.Targets;
 
-namespace MineCore.Impl.Console.Logging
+namespace MineCore.Console.Logging.Impl
 {
     public class NLogConfigBuilder : INLogConfigBuilder
     {

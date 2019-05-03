@@ -1,9 +1,9 @@
 ﻿using System.Threading;
-using MineCore.Impl.Console;
-using MineCore.Impl.Console.Logging;
-using MineCore.Impl.Services;
+using MineCore.Console;
+using MineCore.Console.Impl;
 using MineCore.Languages;
 using MineCore.Platforms;
+using MineCore.Services.Impl;
 using MineCore.Utils;
 using NLog;
 
@@ -13,7 +13,7 @@ namespace MineCore.Server
     {
         public Logger PlatformLogger { get; } = LogManager.GetCurrentClassLogger();
 
-        public MineCoreConsole Console { get; private set; }
+        public IConsole Console { get; private set; }
 
         public ServiceContainer ServiceContainer { get; private set; }
 
@@ -30,8 +30,9 @@ namespace MineCore.Server
             ServiceContainer = new ServiceContainer();
             ServiceContainer.LoadPlatforms = typeof(ServerPlatformServiceAttribute);
             ServiceContainer.LoadServices();
+            PlatformLogger.Info(StringManager.GetString("minecore.service_container.end"));
 
-            Console.StartWorker();
+            Console.Start();
 
 
             while (true)

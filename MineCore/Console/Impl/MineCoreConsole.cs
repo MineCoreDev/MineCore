@@ -1,15 +1,12 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using MineCore.Console;
-using MineCore.Impl.Console.Logging;
+using MineCore.Console.Logging.Impl;
 using MineCore.Languages;
 using MineCore.Utils;
 using NLog;
 
-namespace MineCore.Impl.Console
+namespace MineCore.Console.Impl
 {
     public class MineCoreConsole : IConsole
     {
@@ -27,7 +24,7 @@ namespace MineCore.Impl.Console
             builder.ConsoleTarget.Console = this;
         }
 
-        public void StartWorker()
+        public void Start()
         {
             _cancellationToken = new CancellationTokenSource();
             _worker = Task.Factory.StartNew(() =>

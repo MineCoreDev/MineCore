@@ -1,7 +1,6 @@
-﻿using MineCore.Console.Logging;
-using NLog;
+﻿using NLog;
 
-namespace MineCore.Impl.Console.Logging
+namespace MineCore.Console.Logging.Impl
 {
     public class MineCoreLoggerConfig : ILoggerConfig
     {

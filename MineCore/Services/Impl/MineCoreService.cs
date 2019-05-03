@@ -1,8 +1,7 @@
 ﻿using System;
-using MineCore.Services;
 using NLog;
 
-namespace MineCore.Impl.Services
+namespace MineCore.Services.Impl
 {
     public abstract class MineCoreService : IMineCoreService
     {

@@ -1,10 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using MineCore.Console.Impl;
 using NLog;
 using NLog.Layouts;
 using NLog.Targets;
 
-namespace MineCore.Impl.Console.Logging
+namespace MineCore.Console.Logging.Impl
 {
     [Layout("MineCoreConsole")]
     public class MineCoreConsoleTarget : TargetWithLayout

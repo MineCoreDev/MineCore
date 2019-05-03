@@ -1,10 +1,10 @@
 ﻿using System.Net;
-using MineCore.Impl.Net;
 using MineCore.Net;
-using MineCore.Services.Net;
+using MineCore.Net.Impl;
+using MineCore.Services.Impl;
 using RakDotNet.Utils;
 
-namespace MineCore.Impl.Services.Net
+namespace MineCore.Services.Net.Impl
 {
     [ServerPlatformService]
     public class ServerNetworkService : MineCoreService, IServerNetworkService
