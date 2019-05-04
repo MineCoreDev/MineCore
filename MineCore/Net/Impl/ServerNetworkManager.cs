@@ -26,6 +26,8 @@ namespace MineCore.Net.Impl
 
             ServerEndPoint = endPoint;
 
+            RakDotNet.Utils.Logger.PrintCallBack = log => _logger.Debug(log.Message);
+
             _server = new MinecraftServer(endPoint);
             _server.ConnectPeerEvent += Server_ConnectPeerEvent;
             _server.DisconnectPeerEvent += Server_DisconnectPeerEvent;

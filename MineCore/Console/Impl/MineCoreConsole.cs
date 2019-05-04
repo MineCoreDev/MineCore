@@ -12,12 +12,15 @@ namespace MineCore.Console.Impl
     {
         internal int InputStartTop { get; set; } = 0;
 
+        private Logger _logger = LogManager.GetCurrentClassLogger();
+
         private CancellationTokenSource _cancellationToken;
         private Task _worker;
 
         public MineCoreConsole()
         {
             System.Console.Title = StringManager.GetString("minecore.app.name");
+            System.Console.CancelKeyPress += Console_CancelKeyPress;
 
             NLogConfigBuilder builder = new NLogConfigBuilder();
             LogManager.Configuration = builder.GetConfiguration(new MineCoreLoggerConfig());
@@ -58,6 +61,14 @@ namespace MineCore.Console.Impl
                 _worker.Dispose();
                 _worker = null;
             }
+        }
+
+        private void Console_CancelKeyPress(object sender, ConsoleCancelEventArgs e)
+        {
+            e.Cancel = true;
+            _logger.Info(StringManager.GetString("minecore.app.stopping"));
+
+            //TODO Request Stop Signal...
         }
     }
 }

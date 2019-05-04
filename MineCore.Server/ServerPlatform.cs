@@ -32,6 +32,8 @@ namespace MineCore.Server
             PlatformStartResult result = base.Start();
             if (result == PlatformStartResult.Failed)
                 return PlatformStartResult.Failed;
+            else if (result == PlatformStartResult.Started)
+                return PlatformStartResult.Started;
 
             NetworkManager.Start();
 
@@ -40,6 +42,19 @@ namespace MineCore.Server
                 endPoint.Port));
 
             return PlatformStartResult.Success;
+        }
+
+        public override PlatformStopResult Stop()
+        {
+            PlatformStopResult result = base.Stop();
+            if (result == PlatformStopResult.Failed)
+                return PlatformStopResult.Failed;
+            else if (result == PlatformStopResult.Stopped)
+                return PlatformStopResult.Stopped;
+
+            NetworkManager.Dispose();
+
+            return PlatformStopResult.Success;
         }
     }
 }

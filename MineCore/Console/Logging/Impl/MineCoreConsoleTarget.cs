@@ -27,9 +27,11 @@ namespace MineCore.Console.Logging.Impl
                 if (left == System.Console.BufferWidth - 1)
                 {
                     System.Console.SetCursorPosition(0, System.Console.CursorTop + diff);
+                    System.Console.SetCursorPosition(0, System.Console.CursorTop + diff);
                 }
                 else
                 {
+                    System.Console.SetCursorPosition(left, System.Console.CursorTop + diff - 1);
                     System.Console.SetCursorPosition(left, System.Console.CursorTop + diff - 1);
                 }
 

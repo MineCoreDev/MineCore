@@ -123,6 +123,9 @@
   <data name="minecore.app.start" xml:space="preserve">
     <value>MineCore サーバーを開始しました。</value>
   </data>
+  <data name="minecore.app.stopping" xml:space="preserve">
+    <value>MineCore サーバーを停止しています。</value>
+  </data>
   <data name="minecore.list.platform" xml:space="preserve">
     <value>MCPE</value>
   </data>
