@@ -123,18 +123,6 @@
   <data name="minecore.app.start" xml:space="preserve">
     <value>MineCore サーバーを開始しました。</value>
   </data>
-  <data name="minecore.dependencies.enable" xml:space="preserve">
-    <value>依存関係{0}を有効化...</value>
-  </data>
-  <data name="minecore.dependencies.load" xml:space="preserve">
-    <value>依存関係{0}をロード中...</value>
-  </data>
-  <data name="minecore.dependencies.resolved" xml:space="preserve">
-    <value>{0}の依存関係が解決されました。</value>
-  </data>
-  <data name="minecore.dependencies.resolving" xml:space="preserve">
-    <value>{0}の依存関係を解決しています。</value>
-  </data>
   <data name="minecore.list.platform" xml:space="preserve">
     <value>MCPE</value>
   </data>
@@ -144,16 +132,13 @@
   <data name="minecore.list.systemName" xml:space="preserve">
     <value>MineCore</value>
   </data>
-  <data name="minecore.service_container.end" xml:space="preserve">
-    <value>サービスコンテナは正常に起動しました。</value>
-  </data>
-  <data name="minecore.service_container.start" xml:space="preserve">
-    <value>サービスコンテナを起動しています。</value>
+  <data name="minecore.network.start" xml:space="preserve">
+    <value>ネットワークリスナーを {0}:{1} で開始しました。</value>
   </data>
   <data name="minecore.thread.console" xml:space="preserve">
     <value>Console</value>
   </data>
-  <data name="minecore.thread.server" xml:space="preserve">
-    <value>Server</value>
+  <data name="minecore.thread.main" xml:space="preserve">
+    <value>Main</value>
   </data>
 </root>

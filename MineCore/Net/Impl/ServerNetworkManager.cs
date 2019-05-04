@@ -17,10 +17,14 @@ namespace MineCore.Net.Impl
 
         private ConcurrentDictionary<IPEndPoint, IPlayer> _players = new ConcurrentDictionary<IPEndPoint, IPlayer>();
 
+        public IPEndPoint ServerEndPoint { get; private set; }
+
         public ServerNetworkManager(IPEndPoint endPoint, IServerListData listData)
         {
             endPoint.ThrownOnArgNull(nameof(endPoint));
             listData.ThrownOnArgNull(nameof(listData));
+
+            ServerEndPoint = endPoint;
 
             _server = new MinecraftServer(endPoint);
             _server.ConnectPeerEvent += Server_ConnectPeerEvent;

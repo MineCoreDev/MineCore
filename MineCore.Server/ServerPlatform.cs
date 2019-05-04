@@ -1,44 +1,43 @@
-﻿using System.Threading;
+﻿using System.Net;
+using System.Threading;
 using MineCore.Console;
 using MineCore.Console.Impl;
 using MineCore.Languages;
+using MineCore.Net;
+using MineCore.Net.Impl;
 using MineCore.Platforms;
-using MineCore.Services.Impl;
+using MineCore.Platforms.Impl;
 using MineCore.Utils;
 using NLog;
 
 namespace MineCore.Server
 {
-    public class ServerPlatform : ServiceContainer, IServerPlatform
+    public class ServerPlatform : Platform, IServerPlatform
     {
-        public Logger PlatformLogger { get; } = LogManager.GetCurrentClassLogger();
+        public IServerNetworkManager NetworkManager { get; private set; }
 
-        public IConsole Console { get; private set; }
-
-        public ServiceContainer ServiceContainer { get; private set; }
-
-        public PlatformStartResult Start()
+        protected override bool Init()
         {
-            StringManager.Init();
-            Console = new MineCoreConsole();
-
-            Thread.CurrentThread.Name = StringManager.GetString("minecore.thread.server");
+            bool result = base.Init();
 
             PlatformLogger.Info(StringManager.GetString("minecore.app.start"));
+            NetworkManager = new ServerNetworkManager(new IPEndPoint(IPAddress.Any, 19132),
+                new ServerListData(new MineCraftProtocol()));
 
-            PlatformLogger.Info(StringManager.GetString("minecore.service_container.start"));
-            ServiceContainer = new ServiceContainer();
-            ServiceContainer.LoadPlatforms = typeof(ServerPlatformServiceAttribute);
-            ServiceContainer.LoadServices();
-            PlatformLogger.Info(StringManager.GetString("minecore.service_container.end"));
+            return result;
+        }
 
-            Console.Start();
+        public override PlatformStartResult Start()
+        {
+            PlatformStartResult result = base.Start();
+            if (result == PlatformStartResult.Failed)
+                return PlatformStartResult.Failed;
 
+            NetworkManager.Start();
 
-            while (true)
-            {
-                Thread.Sleep(1);
-            }
+            IPEndPoint endPoint = NetworkManager.ServerEndPoint;
+            PlatformLogger.Info(StringManager.GetString("minecore.network.start", endPoint.Address.ToString(),
+                endPoint.Port));
 
             return PlatformStartResult.Success;
         }

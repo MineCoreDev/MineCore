@@ -10,8 +10,6 @@ namespace MineCore.Extensions
     {
         Logger PackageLogger { get; }
 
-        Type[] Dependencies { get; }
-
         Assembly Assembly { get; }
 
         Version Version { get; }

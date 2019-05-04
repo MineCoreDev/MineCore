@@ -1,3 +1,4 @@
+using System;
 using MineCore.Console;
 using NLog;
 
@@ -9,6 +10,13 @@ namespace MineCore.Platforms
 
         IConsole Console { get; }
 
+        PlatformState State { get; }
+
         PlatformStartResult Start();
+
+        PlatformStopResult Stop();
+
+        void WaitForStop();
+        void WaitForStop(long timeout);
     }
 }

@@ -29,6 +29,8 @@ namespace MineCore.Console.Impl
             _cancellationToken = new CancellationTokenSource();
             _worker = Task.Factory.StartNew(() =>
             {
+                Thread.CurrentThread.Name = StringManager.GetString("minecore.thread.console");
+
                 while (true)
                 {
                     if (_cancellationToken.Token.IsCancellationRequested)
