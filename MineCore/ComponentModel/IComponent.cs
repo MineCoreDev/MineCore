@@ -1,4 +1,4 @@
-using MineCore.Datas;
+using MineCore.Data;
 using Optional;
 
 namespace MineCore.ComponentModel

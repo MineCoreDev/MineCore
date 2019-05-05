@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using MineCore.ComponentModel;
 using MineCore.Utils;
 using Optional;
 
-namespace MineCore.Datas.Components
+namespace MineCore.Data.Components
 {
     public class ComponentDefinitions
     {

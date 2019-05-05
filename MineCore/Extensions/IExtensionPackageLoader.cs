@@ -1,5 +1,5 @@
 using System;
-using MineCore.Datas;
+using MineCore.Data;
 using MineCore.Events.Extensions;
 using NLog;
 using Optional;

@@ -1,4 +1,4 @@
-namespace MineCore.Datas
+namespace MineCore.Data
 {
     public interface IDescription
     {

@@ -1,6 +1,6 @@
 using System;
 using System.Reflection;
-using MineCore.Datas;
+using MineCore.Data;
 using MineCore.LifeCycles;
 using NLog;
 
