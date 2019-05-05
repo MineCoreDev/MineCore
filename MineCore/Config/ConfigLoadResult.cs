@@ -4,7 +4,6 @@ namespace MineCore.Config
     {
         Success,
         Upgrade,
-        NotExist,
         Failed
     }
 }

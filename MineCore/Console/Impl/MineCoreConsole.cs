@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using MineCore.Console.Logging;
 using MineCore.Console.Logging.Impl;
 using MineCore.Languages;
 using MineCore.Utils;
@@ -17,13 +18,13 @@ namespace MineCore.Console.Impl
         private CancellationTokenSource _cancellationToken;
         private Task _worker;
 
-        public MineCoreConsole()
+        public MineCoreConsole(ILoggerConfig config)
         {
             System.Console.Title = StringManager.GetString("minecore.app.name");
             System.Console.CancelKeyPress += Console_CancelKeyPress;
 
             NLogConfigBuilder builder = new NLogConfigBuilder();
-            LogManager.Configuration = builder.GetConfiguration(new MineCoreLoggerConfig());
+            LogManager.Configuration = builder.GetConfiguration(config);
             builder.ConsoleTarget.Console = this;
         }
 

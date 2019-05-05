@@ -1,9 +1,12 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Threading;
+using MineCore.Config;
+using MineCore.Config.Impl;
 using MineCore.Console;
 using MineCore.Console.Impl;
 using MineCore.Languages;
-using MineCore.Net.Impl;
 using NLog;
 
 namespace MineCore.Platforms.Impl
@@ -11,6 +14,8 @@ namespace MineCore.Platforms.Impl
     public class Platform : IPlatform
     {
         public Logger PlatformLogger => LogManager.GetCurrentClassLogger();
+
+        public IPlatfromConfig Config { get; private set; }
 
         public IConsole Console { get; private set; }
 
@@ -21,7 +26,15 @@ namespace MineCore.Platforms.Impl
             try
             {
                 StringManager.Init();
-                Console = new MineCoreConsole();
+                (ConfigLoadResult result, PlatformConfig config) configData =
+                    StaticConfigLoader.Load<PlatformConfig>(Environment.CurrentDirectory + Path.DirectorySeparatorChar +
+                                                            "config.yml");
+                if (configData.result == ConfigLoadResult.Success)
+                    Config = configData.config;
+                else
+                    return false;
+
+                Console = new MineCoreConsole(Config.LoggerConfig);
 
                 Thread.CurrentThread.Name = StringManager.GetString("minecore.thread.main");
 

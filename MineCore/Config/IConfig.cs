@@ -4,9 +4,10 @@ namespace MineCore.Config
 {
     public interface IConfig
     {
-        Version ConfigVersion { get; }
+        Version ConfigVersion { get; set; }
 
-        ConfigLoadResult Load();
+        string FileName { get; }
+
         ConfigSaveResult Save();
     }
 }

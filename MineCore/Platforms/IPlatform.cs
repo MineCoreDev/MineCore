@@ -1,4 +1,5 @@
 using System;
+using MineCore.Config;
 using MineCore.Console;
 using NLog;
 
@@ -7,6 +8,8 @@ namespace MineCore.Platforms
     public interface IPlatform
     {
         Logger PlatformLogger { get; }
+
+        IPlatfromConfig Config { get; }
 
         IConsole Console { get; }
 
