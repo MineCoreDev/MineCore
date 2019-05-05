@@ -1,12 +1,11 @@
 using System;
+using YamlDotNet.Serialization;
 
 namespace MineCore.Config
 {
     public interface IConfig
     {
-        Version ConfigVersion { get; set; }
-
-        string FileName { get; }
+        [YamlIgnore] string FileName { get; }
 
         ConfigSaveResult Save();
     }

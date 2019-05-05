@@ -1,4 +1,5 @@
 ﻿using MineCore.Utils;
+using NLog;
 using NLog.Config;
 using NLog.Layouts;
 
@@ -19,7 +20,8 @@ namespace MineCore.Console.Logging.Impl
             };
 
             conf.AddTarget("console", ConsoleTarget);
-            conf.AddRule(config.MinLogLevel, config.MaxLogLevel, "console");
+            conf.AddRule(LogLevel.FromString(config.MinLogLevel.ToString()),
+                LogLevel.FromString(config.MaxLogLevel.ToString()), "console");
 
             return conf;
         }

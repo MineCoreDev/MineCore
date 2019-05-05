@@ -2,7 +2,7 @@ using MineCore.Console.Logging;
 
 namespace MineCore.Config
 {
-    public interface IPlatfromConfig : IConfig
+    public interface IPlatformConfig : IConfig
     {
         ILoggerConfig LoggerConfig { get; set; }
     }

@@ -9,7 +9,7 @@ namespace MineCore.Platforms
     {
         Logger PlatformLogger { get; }
 
-        IPlatfromConfig Config { get; }
+        IPlatformConfig Config { get; }
 
         IConsole Console { get; }
 

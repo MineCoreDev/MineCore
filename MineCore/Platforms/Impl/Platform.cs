@@ -15,7 +15,7 @@ namespace MineCore.Platforms.Impl
     {
         public Logger PlatformLogger => LogManager.GetCurrentClassLogger();
 
-        public IPlatfromConfig Config { get; private set; }
+        public IPlatformConfig Config { get; private set; }
 
         public IConsole Console { get; private set; }
 
@@ -27,8 +27,9 @@ namespace MineCore.Platforms.Impl
             {
                 StringManager.Init();
                 (ConfigLoadResult result, PlatformConfig config) configData =
-                    StaticConfigLoader.Load<PlatformConfig>(Environment.CurrentDirectory + Path.DirectorySeparatorChar +
-                                                            "config.yml");
+                    MineCore.Config.Impl.Config.Load<PlatformConfig>(Environment.CurrentDirectory +
+                                                                     Path.DirectorySeparatorChar +
+                                                                     "config.json");
                 if (configData.result == ConfigLoadResult.Success)
                     Config = configData.config;
                 else
