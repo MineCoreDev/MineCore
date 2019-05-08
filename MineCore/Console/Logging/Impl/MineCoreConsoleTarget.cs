@@ -23,14 +23,18 @@ namespace MineCore.Console.Logging.Impl
                 if (msg.Contains(Environment.NewLine))
                 {
                     string[] data = msg.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                    System.Console.MoveBufferArea(0, startTop, System.Console.BufferWidth,
-                        diff, 0,
-                        topline + 1 + data.Length - 1);
-
-                    if (msg.EndsWith(Environment.NewLine))
+                    int add = 0;
+                    for (int i = 0; i < data.Length; i++)
                     {
-                        msg = msg.Remove(msg.Length - 1, 1);
+                        add += data[i].Length / System.Console.BufferWidth;
                     }
+
+                    System.Console.MoveBufferArea(0, startTop, System.Console.BufferWidth,
+                        data.Length - 1, 0,
+                        topline + data.Length + add);
+
+                    while (msg.EndsWith(Environment.NewLine))
+                        msg = msg.Remove(msg.Length - 2, 2);
                 }
                 else
                 {
