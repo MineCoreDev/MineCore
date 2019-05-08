@@ -9,7 +9,7 @@ namespace MineCore.Config.Impl
 {
     public class PlatformConfig : Config, IPlatformConfig
     {
-        public override string FileName => Environment.CurrentDirectory + Path.DirectorySeparatorChar + "config.json";
+        public override string FileName => "config.json";
 
         public ILoggerConfig LoggerConfig { get; set; } = new MineCoreLoggerConfig();
     }

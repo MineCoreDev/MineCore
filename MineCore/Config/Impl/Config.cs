@@ -10,8 +10,12 @@ namespace MineCore.Config.Impl
     {
         [JsonIgnore] public virtual string FileName => "";
 
-        public static (ConfigLoadResult result, T config) Load<T>(string fileName) where T : Config
+        public static (ConfigLoadResult result, T config) Load<T>(string fileName, bool currentFile = true)
+            where T : Config
         {
+            if (currentFile)
+                fileName = Environment.CurrentDirectory + Path.DirectorySeparatorChar + fileName;
+
             if (File.Exists(fileName))
             {
                 try
@@ -41,11 +45,12 @@ namespace MineCore.Config.Impl
         {
             try
             {
+                string fullName = Environment.CurrentDirectory + Path.DirectorySeparatorChar + FileName;
                 string json = JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings()
                 {
                     TypeNameHandling = TypeNameHandling.All
                 });
-                File.WriteAllText(FileName, json, Encoding.UTF8);
+                File.WriteAllText(fullName, json, Encoding.UTF8);
 
                 return ConfigSaveResult.Success;
             }

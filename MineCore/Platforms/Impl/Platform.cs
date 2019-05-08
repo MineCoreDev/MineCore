@@ -27,9 +27,7 @@ namespace MineCore.Platforms.Impl
             {
                 StringManager.Init();
                 (ConfigLoadResult result, PlatformConfig config) configData =
-                    MineCore.Config.Impl.Config.Load<PlatformConfig>(Environment.CurrentDirectory +
-                                                                     Path.DirectorySeparatorChar +
-                                                                     "config.json");
+                    MineCore.Config.Impl.Config.Load<PlatformConfig>("config.json");
                 if (configData.result == ConfigLoadResult.Success)
                     Config = configData.config;
                 else
