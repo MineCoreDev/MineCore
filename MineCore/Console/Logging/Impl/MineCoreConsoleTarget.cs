@@ -1,4 +1,5 @@
-﻿using MineCore.Console.Impl;
+﻿using System;
+using MineCore.Console.Impl;
 using NLog;
 using NLog.Layouts;
 using NLog.Targets;
@@ -19,9 +20,25 @@ namespace MineCore.Console.Logging.Impl
             if (startTop != 0)
             {
                 int diff = (topline - startTop) + 1;
-                System.Console.MoveBufferArea(0, startTop, System.Console.BufferWidth,
-                    diff, 0,
-                    topline + 1 + msg.Length / System.Console.BufferWidth);
+                if (msg.Contains(Environment.NewLine))
+                {
+                    string[] data = msg.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                    System.Console.MoveBufferArea(0, startTop, System.Console.BufferWidth,
+                        diff, 0,
+                        topline + 1 + data.Length - 1);
+
+                    if (msg.EndsWith(Environment.NewLine))
+                    {
+                        msg = msg.Remove(msg.Length - 1, 1);
+                    }
+                }
+                else
+                {
+                    System.Console.MoveBufferArea(0, startTop, System.Console.BufferWidth,
+                        diff, 0,
+                        topline + 1 + msg.Length / System.Console.BufferWidth);
+                }
+
                 System.Console.SetCursorPosition(0, topline);
                 System.Console.WriteLine(msg);
                 if (left == System.Console.BufferWidth - 1)
@@ -35,7 +52,7 @@ namespace MineCore.Console.Logging.Impl
                     System.Console.SetCursorPosition(left, System.Console.CursorTop + diff - 1);
                 }
 
-                Console.InputStartTop++;
+                Console.InputStartTop = System.Console.CursorTop;
             }
             else
             {

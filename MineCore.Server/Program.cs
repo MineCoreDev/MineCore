@@ -10,6 +10,8 @@ namespace MineCore.Server
         {
             ServerPlatform server = new ServerPlatform();
             server.Start();
+            server.PlatformLogger.Info("a" + Environment.NewLine + "b" + Environment.NewLine + "c" +
+                                       Environment.NewLine + "e" + Environment.NewLine);
             server.WaitForStop();
         }
     }
