@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using System.Text.RegularExpressions;
 using MineCore.Console.Impl;
 using NLog;
 using NLog.Layouts;
@@ -10,6 +12,8 @@ namespace MineCore.Console.Logging.Impl
     public class MineCoreConsoleTarget : TargetWithLayout
     {
         internal MineCoreConsole Console { private get; set; }
+
+        private Encoding _utf8 = Encoding.UTF8;
 
         protected override void Write(LogEventInfo logEvent)
         {
@@ -25,7 +29,7 @@ namespace MineCore.Console.Logging.Impl
                 int lineOverflow = 0;
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    lineOverflow += lines[i].Length / width;
+                    lineOverflow += _utf8.GetBytes(lines[i]).Length / (width + 1);
                 }
 
                 System.Console.MoveBufferArea(0, inputTop, width, top - inputTop + 1, 0,
