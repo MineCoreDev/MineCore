@@ -14,49 +14,27 @@ namespace MineCore.Console.Logging.Impl
         protected override void Write(LogEventInfo logEvent)
         {
             string msg = Layout.Render(logEvent);
+            int top = System.Console.CursorTop;
             int left = System.Console.CursorLeft;
-            int topline = System.Console.CursorTop;
-            int startTop = Console?.InputStartTop ?? 0;
-            if (startTop != 0)
+            int inputTop = Console.InputStartTop;
+            int width = System.Console.BufferWidth;
+            string[] lines = msg.Split(Environment.NewLine);
+
+            if (inputTop != 0)
             {
-                int diff = (topline - startTop) + 1;
-                if (msg.Contains(Environment.NewLine))
+                int lineOverflow = 0;
+                for (int i = 0; i < lines.Length; i++)
                 {
-                    string[] data = msg.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                    int add = 0;
-                    for (int i = 0; i < data.Length; i++)
-                    {
-                        add += data[i].Length / System.Console.BufferWidth;
-                    }
-
-                    System.Console.MoveBufferArea(0, startTop, System.Console.BufferWidth,
-                        data.Length - 1, 0,
-                        topline + data.Length + add);
-
-                    while (msg.EndsWith(Environment.NewLine))
-                        msg = msg.Remove(msg.Length - 2, 2);
-                }
-                else
-                {
-                    System.Console.MoveBufferArea(0, startTop, System.Console.BufferWidth,
-                        diff, 0,
-                        topline + 1 + msg.Length / System.Console.BufferWidth);
+                    lineOverflow += lines[i].Length / width;
                 }
 
-                System.Console.SetCursorPosition(0, topline);
+                System.Console.MoveBufferArea(0, inputTop, width, top - inputTop + 1, 0,
+                    inputTop + lines.Length + lineOverflow);
+                System.Console.SetCursorPosition(0, inputTop);
                 System.Console.WriteLine(msg);
-                if (left == System.Console.BufferWidth - 1)
-                {
-                    System.Console.SetCursorPosition(0, System.Console.CursorTop + diff);
-                    System.Console.SetCursorPosition(0, System.Console.CursorTop + diff);
-                }
-                else
-                {
-                    System.Console.SetCursorPosition(left, System.Console.CursorTop + diff - 1);
-                    System.Console.SetCursorPosition(left, System.Console.CursorTop + diff - 1);
-                }
+                System.Console.SetCursorPosition(left, inputTop + top - inputTop + lines.Length + lineOverflow);
 
-                Console.InputStartTop = System.Console.CursorTop;
+                Console.InputStartTop = inputTop + lines.Length + lineOverflow;
             }
             else
             {

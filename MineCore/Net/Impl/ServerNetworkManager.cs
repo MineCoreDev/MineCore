@@ -68,6 +68,14 @@ namespace MineCore.Net.Impl
         private void HandleBatchPacket(BatchPacket packet)
         {
             _logger.Info(packet.Payload.Length);
+            try
+            {
+                throw new AggregateException();
+            }
+            catch (AggregateException e)
+            {
+                _logger.Error(e);
+            }
         }
     }
 }

@@ -43,6 +43,7 @@ namespace MineCore.Console.Impl
                     }
 
                     InputStartTop = System.Console.CursorTop;
+                    ReadLine.HistoryEnabled = true;
                     ProcessCommand(ReadLine.Read("> "));
                 }
             }, _cancellationToken.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
