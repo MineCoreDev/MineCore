@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Net;
 using MineCore.Entities;
+using MineCore.Entities.Impl;
 using MineCore.Utils;
 using NLog;
 using RakDotNet.Event.RakNetServerEvents;
@@ -58,16 +59,19 @@ namespace MineCore.Net.Impl
 
         private void Server_ConnectPeerEvent(object sender, MineCraftServerConnectPeerEventArgs e)
         {
+            IPlayer player = new Player();
             e.Peer.HandleBatchPacket = HandleBatchPacket;
+            _players.TryAdd(e.Peer.PeerEndPoint, player);
         }
 
         private void Server_DisconnectPeerEvent(object sender, ServerDisconnectPeerEventArgs e)
         {
+            _players.TryRemove(e.Peer.PeerEndPoint, out IPlayer player);
+            player.Dispose();
         }
 
         private void HandleBatchPacket(BatchPacket packet)
         {
-            _logger.Info(packet.Payload.Length);
         }
     }
 }

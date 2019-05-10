@@ -28,7 +28,7 @@ namespace MineCore.Platforms.Impl
                 StringManager.Init();
                 (ConfigLoadResult result, PlatformConfig config) configData =
                     MineCore.Config.Impl.Config.Load<PlatformConfig>("config.json");
-                if (configData.result == ConfigLoadResult.Success)
+                if (configData.result == ConfigLoadResult.Success || configData.result == ConfigLoadResult.Upgrade)
                     Config = configData.config;
                 else
                     return false;

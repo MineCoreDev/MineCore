@@ -18,19 +18,21 @@ namespace MineCore.Config.Impl
 
             if (File.Exists(fileName))
             {
+                string json = File.ReadAllText(fileName, Encoding.UTF8);
                 try
                 {
-                    string json = File.ReadAllText(fileName, Encoding.UTF8);
                     return (ConfigLoadResult.Success, JsonConvert.DeserializeObject<T>(json,
                         new JsonSerializerSettings()
                         {
                             TypeNameHandling = TypeNameHandling.All
                         }));
                 }
-                catch (Exception e)
+                catch
                 {
-                    System.Console.WriteLine(e.ToString());
-                    return (ConfigLoadResult.Upgrade, Activator.CreateInstance<T>());
+                    File.Copy(fileName, fileName + ".old", true);
+                    T data = Activator.CreateInstance<T>();
+                    data.Save();
+                    return (ConfigLoadResult.Upgrade, data);
                 }
             }
             else
