@@ -14,6 +14,7 @@ namespace MineCore.Server
 {
     public class ServerPlatform : Platform, IServerPlatform
     {
+        public IMineCraftProtocol Protocol { get; private set; }
         public IServerNetworkManager NetworkManager { get; private set; }
 
         protected override bool Init()
@@ -21,8 +22,9 @@ namespace MineCore.Server
             bool result = base.Init();
 
             PlatformLogger.Info(StringManager.GetString("minecore.app.start"));
-            NetworkManager = new ServerNetworkManager(new IPEndPoint(IPAddress.Any, 19132),
-                new ServerListData(new MineCraftProtocol()));
+            Protocol = new MineCraftProtocol();
+            NetworkManager = new ServerNetworkManager(new IPEndPoint(IPAddress.Any, 19132), Protocol,
+                new ServerListData(Protocol));
 
             return result;
         }

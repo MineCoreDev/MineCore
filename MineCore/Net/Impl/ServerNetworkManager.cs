@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Net;
+using BinaryIO;
+using BinaryIO.Compression;
 using MineCore.Entities;
 using MineCore.Entities.Impl;
+using MineCore.Net.Protocols;
 using MineCore.Utils;
 using NLog;
+using Optional.Unsafe;
 using RakDotNet.Event.RakNetServerEvents;
 using RakDotNet.Minecraft;
 using RakDotNet.Minecraft.Event.MineCraftServerEvents;
@@ -19,14 +23,17 @@ namespace MineCore.Net.Impl
 
         private ConcurrentDictionary<IPEndPoint, IPlayer> _players = new ConcurrentDictionary<IPEndPoint, IPlayer>();
 
+        public IMineCraftProtocol Protocol { get; private set; }
         public IPEndPoint ServerEndPoint { get; private set; }
 
-        public ServerNetworkManager(IPEndPoint endPoint, IServerListData listData)
+        public ServerNetworkManager(IPEndPoint endPoint, IMineCraftProtocol protocol, IServerListData listData)
         {
             endPoint.ThrownOnArgNull(nameof(endPoint));
             listData.ThrownOnArgNull(nameof(listData));
 
             ServerEndPoint = endPoint;
+
+            Protocol = protocol;
 
             RakDotNet.Utils.Logger.PrintCallBack = log => _logger.Debug(log.Message);
 
@@ -72,6 +79,25 @@ namespace MineCore.Net.Impl
 
         private void HandleBatchPacket(BatchPacket packet)
         {
+            byte[] data = CompressionManager.DecompressionZlib(new BinaryStream(packet.Payload), true);
+
+            using (NetworkStream stream = new NetworkStream(data))
+            {
+                while (!stream.IsEndOfStream())
+                {
+                    int len = stream.ReadVarInt();
+                    byte[] payload = stream.ReadBytes(len);
+                    DataPacket pk = Protocol.GetDefinedPacket(payload[0]).ValueOrFailure();
+
+                    pk.SetBuffer(payload);
+
+                    pk.DecodeHeader();
+                    pk.DecodePayload();
+
+                    _players.TryGetValue(packet.EndPoint, out IPlayer player);
+                    player?.HandleDataPacket(pk);
+                }
+            }
         }
     }
 }
