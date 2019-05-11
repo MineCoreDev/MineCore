@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using MineCore.Utils;
 using Newtonsoft.Json;
 using YamlDotNet.Serialization;
 
@@ -13,6 +14,8 @@ namespace MineCore.Config.Impl
         public static (ConfigLoadResult result, T config) Load<T>(string fileName, bool currentFile = true)
             where T : Config
         {
+            fileName.ThrownOnArgNull(nameof(fileName));
+
             if (currentFile)
                 fileName = Environment.CurrentDirectory + Path.DirectorySeparatorChar + fileName;
 

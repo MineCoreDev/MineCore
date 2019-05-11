@@ -1,11 +1,10 @@
 using System.Collections.Concurrent;
-using MineCore.ComponentModel;
 using MineCore.Utils;
 using Optional;
 
-namespace MineCore.Data.Components
+namespace MineCore.ComponentModel.Impl
 {
-    public class ComponentDefinitions
+    public class ComponentDefinitions : IComponentDefinitions
     {
         private ConcurrentDictionary<string, IComponent> _defineComponents =
             new ConcurrentDictionary<string, IComponent>();

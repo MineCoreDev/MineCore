@@ -2,6 +2,8 @@
 using System.Net;
 using MineCore.Net;
 using MineCore.Net.Protocols;
+using MineCore.Net.Protocols.Defaults;
+using MineCore.Utils;
 using NLog;
 
 namespace MineCore.Entities.Impl
@@ -15,6 +17,8 @@ namespace MineCore.Entities.Impl
 
         public void HandleDataPacket(DataPacket packet)
         {
+            packet.ThrownOnArgNull(nameof(packet));
+
             if (packet is LoginPacket loginPacket)
             {
                 LogManager.GetCurrentClassLogger().Info(loginPacket.Protocol);

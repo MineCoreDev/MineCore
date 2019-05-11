@@ -20,6 +20,8 @@ namespace MineCore.Console.Impl
 
         public MineCoreConsole(ILoggerConfig config)
         {
+            config.ThrownOnArgNull(nameof(config));
+
             System.Console.Title = StringManager.GetString("minecore.app.name");
             System.Console.CancelKeyPress += Console_CancelKeyPress;
 
