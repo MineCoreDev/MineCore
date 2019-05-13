@@ -59,6 +59,8 @@ namespace MineCore.Net.Protocols.Defaults
                 ReadLoginData(stream.ReadBytes(loginDataLen));
                 int clientDataLen = stream.ReadInt(ByteOrder.Little);
                 ReadClientData(stream.ReadBytes(clientDataLen));
+
+                WriteBytes(stream.GetBuffer());
             }
         }
 

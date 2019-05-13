@@ -3,6 +3,7 @@ using System.IO.Compression;
 using System.Net;
 using BinaryIO;
 using BinaryIO.Compression;
+using MineCore.Data;
 using MineCore.Net;
 using MineCore.Net.Protocols;
 using MineCore.Net.Protocols.Defaults;
@@ -14,12 +15,17 @@ using RakDotNet.Protocols.Packets.MessagePackets;
 
 namespace MineCore.Entities.Impl
 {
-    public class Player : Entity, IPlayer
+    public partial class Player : Entity, IPlayer
     {
+        public IMineCraftProtocol Protocol { get; }
         public MinecraftPeer ClientPeer { get; }
 
-        public Player(MinecraftPeer peer)
+        public ILoginData LoginData { get; private set; }
+        public IClientData ClientData { get; private set; }
+
+        public Player(IMineCraftProtocol protocol, MinecraftPeer peer)
         {
+            Protocol = protocol;
             ClientPeer = peer;
         }
 
@@ -40,19 +46,6 @@ namespace MineCore.Entities.Impl
             batch.EndPoint = ClientPeer.PeerEndPoint;
 
             ClientPeer.SendEncapsulatedPacket(batch, reliability, packet.Channel);
-        }
-
-        public void HandleDataPacket(DataPacket packet)
-        {
-            packet.ThrownOnArgNull(nameof(packet));
-
-            if (packet is LoginPacket loginPacket)
-            {
-                PlayStatusPacket pk = new PlayStatusPacket();
-                pk.Status = PlayStatusPacket.LOGIN_FAILED_SERVER;
-
-                SendDataPacket(pk, reliability: Reliability.Unreliable);
-            }
         }
 
         public void Dispose()

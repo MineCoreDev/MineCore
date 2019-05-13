@@ -72,6 +72,10 @@ namespace MineCore.Net.Impl
         {
             RegisterDataPacket(LOGIN_PACKET, typeof(LoginPacket));
             RegisterDataPacket(PLAY_STATUS_PACKET, typeof(PlayStatusPacket));
+            RegisterDataPacket(SERVER_TO_CLIENT_HANDSHAKE_PACKET, typeof(ServerToClientHandshakePacket));
+            RegisterDataPacket(CLIENT_TO_SERVER_HANDSHAKE_PACKET, typeof(ClientToServerHandshakePacket));
+            RegisterDataPacket(DISCONNECT_PACKET, typeof(DisconnectPacket));
+            RegisterDataPacket(RESOURCE_PACKS_INFO_PACKET, typeof(ResourcePacksInfoPacket));
 
             Compile();
         }

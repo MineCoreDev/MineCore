@@ -11,7 +11,7 @@
       <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
       <PackageReference Include="NLog" Version="4.6.3" />
       <PackageReference Include="Optional" Version="4.0.0" />
-      <PackageReference Include="RakDotNet" Version="0.0.13" />
+      <PackageReference Include="RakDotNet" Version="0.0.13-beta" />
       <PackageReference Include="ReadLine" Version="2.0.1" />
       <PackageReference Include="SharpNoise" Version="0.12.0" />
       <PackageReference Include="SharpZipLib" Version="1.1.0" />

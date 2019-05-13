@@ -66,7 +66,7 @@ namespace MineCore.Net.Impl
 
         private void Server_ConnectPeerEvent(object sender, MineCraftServerConnectPeerEventArgs e)
         {
-            IPlayer player = new Player(e.Peer);
+            IPlayer player = new Player(Protocol, e.Peer);
             e.Peer.HandleBatchPacket = HandleBatchPacket;
             _players.TryAdd(e.Peer.PeerEndPoint, player);
         }
