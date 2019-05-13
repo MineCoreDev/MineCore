@@ -29,6 +29,20 @@ namespace MineCore.Net.Protocols.Defaults
         public override void EncodePayload()
         {
             WriteInt(Protocol);
+
+            using (BinaryStream stream = new BinaryStream())
+            {
+                byte[] loginData = WriteLoginData();
+                stream.WriteInt(loginData.Length, ByteOrder.Little);
+                stream.WriteBytes(loginData);
+
+                byte[] clientData = WriteClientData();
+                stream.WriteInt(clientData.Length, ByteOrder.Little);
+                stream.WriteBytes(clientData);
+
+                WriteVarInt((int) stream.Length);
+                WriteBytes(stream.ReadBytes());
+            }
         }
 
         public override void DecodePayload()
@@ -57,6 +71,7 @@ namespace MineCore.Net.Protocols.Defaults
             {
                 IDictionary<string, object> headers = JWT.Headers(token.ToString());
                 string x5u = headers["x5u"].ToString();
+
                 ECPublicKeyParameters x5KeyParam =
                     (ECPublicKeyParameters) PublicKeyFactory.CreateKey(Convert.FromBase64String(x5u));
                 ECParameters signParam = new ECParameters
@@ -70,7 +85,6 @@ namespace MineCore.Net.Protocols.Defaults
                 };
                 signParam.Validate();
 
-
                 JObject jwt = JObject.Parse(JWT.Decode(token.ToString(), ECDsa.Create(signParam)));
                 if (jwt.ContainsKey("extraData"))
                 {
@@ -80,21 +94,42 @@ namespace MineCore.Net.Protocols.Defaults
                     LoginData.IdentityPublicKey = jwt["identityPublicKey"].ToString();
                     LoginData.Xuid = extData["XUID"].Value<string>();
                 }
-
-                LogManager.GetCurrentClassLogger().Info(LoginData.DisplayName);
             }
         }
 
-        public void WriteLoginData()
+        public byte[] WriteLoginData()
         {
+            throw new NotImplementedException();
         }
 
         public void ReadClientData(byte[] payload)
         {
+            string json = Encoding.UTF8.GetString(payload);
+            JObject data = JObject.Parse(JWT.Payload(json));
+
+            ClientData.ClientRandomId = data["ClientRandomId"].Value<string>();
+            ClientData.CurrentInputMode = data.Value<int>("CurrentInputMode");
+            ClientData.DefaultInputMode = data.Value<int>("DefaultInputMode");
+            ClientData.DeviceModel = data.Value<string>("DeviceModel");
+            ClientData.DeviceOS = data.Value<int>("DeviceOS");
+            ClientData.GameVersion = data.Value<string>("GameVersion");
+            ClientData.GUIScale = data.Value<int>("GuiScale");
+            ClientData.LanguageCode = data.Value<string>("LanguageCode");
+            ClientData.ServerAddress = data.Value<string>("ServerAddress");
+            ClientData.Skin = new Skin()
+            {
+                CapeData = Convert.FromBase64String(data.Value<string>("CapeData")),
+                GeometryData = Encoding.UTF8.GetString(Convert.FromBase64String(data.Value<string>("SkinGeometry"))),
+                GeometryName = data.Value<string>("SkinGeometryName"),
+                SkinData = Convert.FromBase64String(data.Value<string>("SkinData")),
+                SkinId = data.Value<string>("SkinId")
+            };
+            ClientData.UIProfile = data.Value<int>("UIProfile");
         }
 
-        public void WriteClientData()
+        public byte[] WriteClientData()
         {
+            throw new NotImplementedException();
         }
     }
 }

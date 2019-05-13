@@ -71,6 +71,7 @@ namespace MineCore.Net.Impl
         private void Init()
         {
             RegisterDataPacket(LOGIN_PACKET, typeof(LoginPacket));
+            RegisterDataPacket(PLAY_STATUS_PACKET, typeof(PlayStatusPacket));
 
             Compile();
         }

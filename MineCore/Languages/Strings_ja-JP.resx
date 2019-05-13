@@ -135,6 +135,9 @@
   <data name="minecore.list.systemName" xml:space="preserve">
     <value>MineCore</value>
   </data>
+  <data name="minecore.mojang.rootKey" xml:space="preserve">
+    <value>MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAE8ELkixyLcwlZryUQcu1TvPOmI2B7vX83ndnWRUaXm74wFfa5f/lwQNTfrLVHa2PmenpGI6JhIMUJaWZrjmMj90NoKNFSNBuKdm8rYiXsfaz3K36x/1U26HpG0ZxK/V1V</value>
+  </data>
   <data name="minecore.network.start" xml:space="preserve">
     <value>ネットワークリスナーを {0}:{1} で開始しました。</value>
   </data>
