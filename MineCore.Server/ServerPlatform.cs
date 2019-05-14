@@ -1,5 +1,7 @@
 ﻿using System.Net;
 using System.Threading;
+using MineCore.Configs;
+using MineCore.Configs.Impl;
 using MineCore.Console;
 using MineCore.Console.Impl;
 using MineCore.Languages;
@@ -14,6 +16,7 @@ namespace MineCore.Server
 {
     public class ServerPlatform : Platform, IServerPlatform
     {
+        public IServerPlatformConfig ServerConfig { get; private set; }
         public IMineCraftProtocol Protocol { get; private set; }
         public IServerNetworkManager NetworkManager { get; private set; }
 
@@ -21,10 +24,16 @@ namespace MineCore.Server
         {
             bool result = base.Init();
 
+            (ConfigLoadResult result, ServerPlatformConfig config) configData =
+                Configs.Impl.Config.Load<ServerPlatformConfig>("server_config.json");
+            if (configData.result == ConfigLoadResult.Success || configData.result == ConfigLoadResult.Upgrade)
+                ServerConfig = configData.config;
+            else
+                return false;
+
             PlatformLogger.Info(StringManager.GetString("minecore.app.start"));
             Protocol = new MineCraftProtocol();
-            NetworkManager = new ServerNetworkManager(new IPEndPoint(IPAddress.Any, 19132), Protocol,
-                new ServerListData(Protocol));
+            NetworkManager = new ServerNetworkManager(new IPEndPoint(IPAddress.Any, ServerConfig.ServerPort), this);
 
             return result;
         }

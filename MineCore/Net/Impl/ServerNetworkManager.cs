@@ -3,9 +3,11 @@ using System.Collections.Concurrent;
 using System.Net;
 using BinaryIO;
 using BinaryIO.Compression;
+using MineCore.Configs;
 using MineCore.Entities;
 using MineCore.Entities.Impl;
 using MineCore.Net.Protocols;
+using MineCore.Platforms;
 using MineCore.Utils;
 using NLog;
 using Optional.Unsafe;
@@ -18,29 +20,36 @@ namespace MineCore.Net.Impl
 {
     public class ServerNetworkManager : IServerNetworkManager
     {
-        private Logger _logger = LogManager.GetCurrentClassLogger();
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private MinecraftServer _server;
 
-        private ConcurrentDictionary<IPEndPoint, IPlayer> _players = new ConcurrentDictionary<IPEndPoint, IPlayer>();
+        private ConcurrentDictionary<IPEndPoint, IServerPlayer> _players =
+            new ConcurrentDictionary<IPEndPoint, IServerPlayer>();
 
+        public IServerPlatformConfig ServerConfig { get; private set; }
         public IMineCraftProtocol Protocol { get; private set; }
+        public IServerListData ServerListData { get; private set; }
         public IPEndPoint ServerEndPoint { get; private set; }
 
-        public ServerNetworkManager(IPEndPoint endPoint, IMineCraftProtocol protocol, IServerListData listData)
+        public ServerNetworkManager(IPEndPoint endPoint, IServerPlatform platform)
         {
             endPoint.ThrownOnArgNull(nameof(endPoint));
-            listData.ThrownOnArgNull(nameof(listData));
+            platform.ThrownOnArgNull(nameof(platform));
 
             ServerEndPoint = endPoint;
 
-            Protocol = protocol;
+            ServerConfig = platform.ServerConfig;
+            Protocol = platform.Protocol;
+            ServerListData = new ServerListData(Protocol);
+            ServerListData.ServerName = ServerConfig.ServerName;
+            ServerListData.MaxPlayer = ServerConfig.ServerMaxPlayer;
 
             RakDotNet.Utils.Logger.PrintCallBack = log => _logger.Debug(log.Message);
 
             _server = new MinecraftServer(endPoint);
             _server.ConnectPeerEvent += Server_ConnectPeerEvent;
             _server.DisconnectPeerEvent += Server_DisconnectPeerEvent;
-            UpdateServerList(listData);
+            UpdateServerList();
         }
 
         public void Start()
@@ -48,11 +57,9 @@ namespace MineCore.Net.Impl
             _server.Start();
         }
 
-        public void UpdateServerList(IServerListData listData)
+        public void UpdateServerList()
         {
-            listData.ThrownOnArgNull(nameof(listData));
-
-            _server.ServerListData = listData.GetString();
+            _server.ServerListData = ServerListData.GetString();
         }
 
         public void Dispose()
@@ -66,15 +73,21 @@ namespace MineCore.Net.Impl
 
         private void Server_ConnectPeerEvent(object sender, MineCraftServerConnectPeerEventArgs e)
         {
-            IPlayer player = new Player(Protocol, e.Peer);
+            IServerPlayer serverPlayer = new ServerPlayer(e.Peer, this);
             e.Peer.HandleBatchPacket = HandleBatchPacket;
-            _players.TryAdd(e.Peer.PeerEndPoint, player);
+            _players.TryAdd(e.Peer.PeerEndPoint, serverPlayer);
+
+            ServerListData.JoinedPlayer = _players.Count;
+            UpdateServerList();
         }
 
         private void Server_DisconnectPeerEvent(object sender, ServerDisconnectPeerEventArgs e)
         {
-            _players.TryRemove(e.Peer.PeerEndPoint, out IPlayer player);
+            _players.TryRemove(e.Peer.PeerEndPoint, out IServerPlayer player);
             player.Dispose();
+
+            ServerListData.JoinedPlayer = _players.Count;
+            UpdateServerList();
         }
 
         private void HandleBatchPacket(BatchPacket packet)
@@ -94,7 +107,7 @@ namespace MineCore.Net.Impl
                     pk.DecodeHeader();
                     pk.DecodePayload();
 
-                    _players.TryGetValue(packet.EndPoint, out IPlayer player);
+                    _players.TryGetValue(packet.EndPoint, out IServerPlayer player);
                     player?.HandleDataPacket(pk);
                 }
             }

@@ -1,11 +1,7 @@
-using System;
-using System.IO;
-using System.Text;
 using MineCore.Console.Logging;
 using MineCore.Console.Logging.Impl;
-using YamlDotNet.Serialization;
 
-namespace MineCore.Config.Impl
+namespace MineCore.Configs.Impl
 {
     public class PlatformConfig : Config, IPlatformConfig
     {

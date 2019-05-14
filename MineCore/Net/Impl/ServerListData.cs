@@ -7,7 +7,7 @@ namespace MineCore.Net.Impl
     {
         public string Platform { get; } = StringManager.GetString("minecore.list.platform");
 
-        public string ServerName { get; set; } = StringManager.GetString("minecore.list.serverName.default");
+        public string ServerName { get; set; }
 
         public int ProtocolNumber { get; }
 

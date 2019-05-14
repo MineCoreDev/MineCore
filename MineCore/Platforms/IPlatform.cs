@@ -1,5 +1,5 @@
 using System;
-using MineCore.Config;
+using MineCore.Configs;
 using MineCore.Console;
 using NLog;
 

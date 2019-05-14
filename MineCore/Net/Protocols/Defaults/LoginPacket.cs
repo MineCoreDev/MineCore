@@ -26,6 +26,8 @@ namespace MineCore.Net.Protocols.Defaults
         public LoginData LoginData { get; set; }
         public ClientData ClientData { get; set; }
 
+        public bool TokenValidated { get; set; } = true;
+
         public override void EncodePayload()
         {
             WriteInt(Protocol);
@@ -87,14 +89,31 @@ namespace MineCore.Net.Protocols.Defaults
                 };
                 signParam.Validate();
 
-                JObject jwt = JObject.Parse(JWT.Decode(token.ToString(), ECDsa.Create(signParam)));
-                if (jwt.ContainsKey("extraData"))
+                try
                 {
-                    JObject extData = JObject.Parse(jwt["extraData"].ToString());
-                    LoginData.ClientUUID = new Guid(extData["identity"].Value<string>());
-                    LoginData.DisplayName = extData["displayName"].Value<string>();
-                    LoginData.IdentityPublicKey = jwt["identityPublicKey"].ToString();
-                    LoginData.Xuid = extData["XUID"].Value<string>();
+                    JObject jwt = JObject.Parse(JWT.Decode(token.ToString(), ECDsa.Create(signParam)));
+                    if (jwt.ContainsKey("extraData"))
+                    {
+                        JObject extData = JObject.Parse(jwt["extraData"].ToString());
+                        LoginData.ClientUUID = new Guid(extData["identity"].Value<string>());
+                        LoginData.DisplayName = extData["displayName"].Value<string>();
+                        LoginData.IdentityPublicKey = jwt["identityPublicKey"].ToString();
+                        LoginData.Xuid = extData["XUID"].Value<string>();
+                    }
+                }
+                catch (IntegrityException)
+                {
+                    TokenValidated = false;
+
+                    JObject jwt = JObject.Parse(JWT.Payload(token.ToString()));
+                    if (jwt.ContainsKey("extraData"))
+                    {
+                        JObject extData = JObject.Parse(jwt["extraData"].ToString());
+                        LoginData.ClientUUID = new Guid(extData["identity"].Value<string>());
+                        LoginData.DisplayName = extData["displayName"].Value<string>();
+                        LoginData.IdentityPublicKey = jwt["identityPublicKey"].ToString();
+                        LoginData.Xuid = extData["XUID"].Value<string>();
+                    }
                 }
             }
         }

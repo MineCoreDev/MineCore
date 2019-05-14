@@ -1,7 +1,6 @@
-using System;
 using YamlDotNet.Serialization;
 
-namespace MineCore.Config
+namespace MineCore.Configs
 {
     public interface IConfig
     {

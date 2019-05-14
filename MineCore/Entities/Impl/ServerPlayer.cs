@@ -3,6 +3,7 @@ using System.IO.Compression;
 using System.Net;
 using BinaryIO;
 using BinaryIO.Compression;
+using MineCore.Configs;
 using MineCore.Data;
 using MineCore.Net;
 using MineCore.Net.Protocols;
@@ -15,17 +16,22 @@ using RakDotNet.Protocols.Packets.MessagePackets;
 
 namespace MineCore.Entities.Impl
 {
-    public partial class Player : Entity, IPlayer
+    public partial class ServerPlayer : Entity, IServerPlayer
     {
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
         public IMineCraftProtocol Protocol { get; }
+        public IServerListData ServerListData { get; }
         public MinecraftPeer ClientPeer { get; }
+        public IServerPlatformConfig ServerConfig { get; }
 
         public ILoginData LoginData { get; private set; }
         public IClientData ClientData { get; private set; }
 
-        public Player(IMineCraftProtocol protocol, MinecraftPeer peer)
+        public ServerPlayer(MinecraftPeer peer, IServerNetworkManager networkManager)
         {
-            Protocol = protocol;
+            Protocol = networkManager.Protocol;
+            ServerListData = networkManager.ServerListData;
+            ServerConfig = networkManager.ServerConfig;
             ClientPeer = peer;
         }
 

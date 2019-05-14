@@ -1,4 +1,4 @@
-namespace MineCore.Config
+namespace MineCore.Configs
 {
     public enum ConfigLoadResult
     {

@@ -1,6 +1,6 @@
 using MineCore.Console.Logging;
 
-namespace MineCore.Config
+namespace MineCore.Configs
 {
     public interface IPlatformConfig : IConfig
     {

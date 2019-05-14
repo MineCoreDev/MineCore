@@ -2,6 +2,7 @@
 using System.IO.Compression;
 using System.Net;
 using BinaryIO.Compression;
+using MineCore.Configs;
 using MineCore.Data;
 using MineCore.Net;
 using MineCore.Net.Protocols;
@@ -10,10 +11,12 @@ using RakDotNet.Protocols.Packets.MessagePackets;
 
 namespace MineCore.Entities
 {
-    public interface IPlayer : IHuman, IDataPacketHandler, IDisposable
+    public interface IServerPlayer : IHuman, IDataPacketHandler, IDisposable
     {
         IMineCraftProtocol Protocol { get; }
+        IServerListData ServerListData { get; }
         MinecraftPeer ClientPeer { get; }
+        IServerPlatformConfig ServerConfig { get; }
 
         ILoginData LoginData { get; }
         IClientData ClientData { get; }

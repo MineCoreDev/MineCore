@@ -3,9 +3,8 @@ using System.IO;
 using System.Text;
 using MineCore.Utils;
 using Newtonsoft.Json;
-using YamlDotNet.Serialization;
 
-namespace MineCore.Config.Impl
+namespace MineCore.Configs.Impl
 {
     public class Config : IConfig
     {
