@@ -126,6 +126,9 @@
   <data name="minecore.app.stopping" xml:space="preserve">
     <value>MineCore サーバーを停止しています。</value>
   </data>
+  <data name="minecore.config.upgrade" xml:space="preserve">
+    <value>設定ファイル {0} を更新しました。</value>
+  </data>
   <data name="minecore.list.platform" xml:space="preserve">
     <value>MCPE</value>
   </data>

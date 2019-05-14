@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using MineCore.Utils;
 using Newtonsoft.Json;
+using NLog;
 
 namespace MineCore.Configs.Impl
 {
@@ -31,7 +32,8 @@ namespace MineCore.Configs.Impl
                 }
                 catch
                 {
-                    File.Copy(fileName, fileName + ".old", true);
+                    File.Copy(fileName, fileName + DateTime.Now.Ticks + ".old", true);
+                    LogManager.GetCurrentClassLogger().Info("minecore.config.upgrade", fileName);
                     T data = Activator.CreateInstance<T>();
                     data.Save();
                     return (ConfigLoadResult.Upgrade, data);

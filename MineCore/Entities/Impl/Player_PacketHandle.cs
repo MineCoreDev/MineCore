@@ -15,14 +15,20 @@ namespace MineCore.Entities.Impl
             {
                 OnLoginPacket(loginPacket);
             }
-            else if (packet is ServerToClientHandshakePacket serverToClient)
-            {
-                OnServerToClientHandshakePacket(serverToClient);
-            }
             else if (packet is ClientToServerHandshakePacket clientToServer)
             {
                 OnClientToServerHandshakePacket(clientToServer);
             }
+            else if (packet is DisconnectPacket disconnect)
+            {
+                OnDisconnectPacket(disconnect);
+            }
+            else if (packet is ResourcePackClientResponsePacket resourcePackClientResponse)
+            {
+                OnResourcePackClientResponsePacket(resourcePackClientResponse);
+            }
+
+            packet.Close();
         }
 
         private void OnLoginPacket(LoginPacket packet)
@@ -51,9 +57,7 @@ namespace MineCore.Entities.Impl
 
             if (ServerConfig.UseXboxLiveAuth && !packet.TokenValidated)
             {
-                DisconnectPacket pk2 = new DisconnectPacket();
-                pk2.Message = "TokenValidateError";
-                SendDataPacket(pk2);
+                Close("xbox.auth.error");
                 return;
             }
 
@@ -83,14 +87,37 @@ namespace MineCore.Entities.Impl
             SendDataPacket(pk2);
         }
 
-        public void OnServerToClientHandshakePacket(ServerToClientHandshakePacket packet)
-        {
-            throw new NotImplementedException();
-        }
-
         public void OnClientToServerHandshakePacket(ClientToServerHandshakePacket packet)
         {
+            IsEncrypt = true;
+
             LoginSuccess();
+        }
+
+        public void OnDisconnectPacket(DisconnectPacket packet)
+        {
+            ClientPeer.Disconnect(packet.Message);
+        }
+
+        public void OnResourcePackClientResponsePacket(ResourcePackClientResponsePacket packet)
+        {
+            if (packet.ResponseStatus == ResourcePackClientResponsePacket.STATUS_REFUSED)
+            {
+                Close("disconnectionScreen.resourcePack");
+            }
+            else if (packet.ResponseStatus == ResourcePackClientResponsePacket.STATUS_SEND_PACKS)
+            {
+                //TODO: ResourcePackDataInfoPacket
+            }
+            else if (packet.ResponseStatus == ResourcePackClientResponsePacket.STATUS_HAVE_ALL_PACKS)
+            {
+                ResourcePackStackPacket resourcePackStackPacket = new ResourcePackStackPacket();
+                SendDataPacket(resourcePackStackPacket);
+            }
+            else if (packet.ResponseStatus == ResourcePackClientResponsePacket.STATUS_COMPLETED)
+            {
+                _logger.Info("start");
+            }
         }
     }
 }

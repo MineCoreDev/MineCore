@@ -11,15 +11,11 @@ using RakDotNet.Protocols.Packets.MessagePackets;
 
 namespace MineCore.Entities
 {
-    public interface IServerPlayer : IHuman, IDataPacketHandler, IDisposable
+    public interface IServerPlayer : IPlayer, IDataPacketHandler
     {
-        IMineCraftProtocol Protocol { get; }
         IServerListData ServerListData { get; }
         MinecraftPeer ClientPeer { get; }
         IServerPlatformConfig ServerConfig { get; }
-
-        ILoginData LoginData { get; }
-        IClientData ClientData { get; }
 
         void SendDataPacket(DataPacket packet, bool needAck = false, Reliability reliability = Reliability.Reliable,
             CompressionLevel compressionLevel = CompressionLevel.Fastest);

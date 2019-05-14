@@ -1,45 +1,40 @@
-﻿using System;
-using BinaryIO;
-using MineCore.Data;
+﻿using MineCore.Data;
 using MineCore.Net.Impl;
 
 namespace MineCore.Net.Protocols.Defaults
 {
-    public class ResourcePacksInfoPacket : DataPacket
+    public class ResourcePackStackPacket : DataPacket
     {
-        public override byte PacketId => MineCraftProtocol.RESOURCE_PACKS_INFO_PACKET;
+        public override byte PacketId => MineCraftProtocol.RESOURCE_PACK_STACK_PACKET;
 
         public bool MustAccept { get; set; } = false;
-        public bool HasScripts { get; set; } = false;
         public IResourcePack[] BehaviourPackEntries { get; set; } = new IResourcePack[0];
         public IResourcePack[] ResourcePackEntries { get; set; } = new IResourcePack[0];
+        public bool IsExperimental { get; set; } = false;
 
         public override void EncodePayload()
         {
             WriteBoolean(MustAccept);
-            WriteBoolean(HasScripts);
 
             WriteResourcePack(BehaviourPackEntries);
             WriteResourcePack(ResourcePackEntries);
+
+            WriteBoolean(IsExperimental);
         }
 
         public override void DecodePayload()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
-        public void WriteResourcePack(IResourcePack[] entries)
+        public void WriteResourcePack(IResourcePack[] resourcePacks)
         {
-            WriteUShort((ushort) entries.Length, ByteOrder.Little);
-            foreach (IResourcePack entry in entries)
+            WriteUVarInt((uint) resourcePacks.Length);
+            foreach (IResourcePack entry in resourcePacks)
             {
                 WriteString(entry.PackId);
                 WriteString(entry.PackVersion);
-                WriteULong(entry.PackSize, ByteOrder.Little);
-                WriteString(entry.EncryptionKey);
                 WriteString(entry.SubPackName);
-                WriteString(entry.ContentIdentity);
-                WriteBoolean(entry.PackFlag);
             }
         }
     }

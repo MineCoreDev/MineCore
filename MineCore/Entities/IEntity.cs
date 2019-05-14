@@ -4,5 +4,7 @@
     {
         long EntityId { get; }
         long EntityRuntimeId { get; }
+
+        void Close();
     }
 }

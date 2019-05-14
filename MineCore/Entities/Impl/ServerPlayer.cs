@@ -19,13 +19,14 @@ namespace MineCore.Entities.Impl
     public partial class ServerPlayer : Entity, IServerPlayer
     {
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
-        public IMineCraftProtocol Protocol { get; }
-        public IServerListData ServerListData { get; }
-        public MinecraftPeer ClientPeer { get; }
-        public IServerPlatformConfig ServerConfig { get; }
+        public IMineCraftProtocol Protocol { get; private set; }
+        public IServerListData ServerListData { get; private set; }
+        public MinecraftPeer ClientPeer { get; private set; }
+        public IServerPlatformConfig ServerConfig { get; private set; }
 
         public ILoginData LoginData { get; private set; }
         public IClientData ClientData { get; private set; }
+        public bool IsEncrypt { get; private set; }
 
         public ServerPlayer(MinecraftPeer peer, IServerNetworkManager networkManager)
         {
@@ -52,6 +53,14 @@ namespace MineCore.Entities.Impl
             batch.EndPoint = ClientPeer.PeerEndPoint;
 
             ClientPeer.SendEncapsulatedPacket(batch, reliability, packet.Channel);
+        }
+
+        public void Close(string message)
+        {
+            DisconnectPacket disconnectPacket = new DisconnectPacket();
+            disconnectPacket.Message = message;
+
+            SendDataPacket(disconnectPacket);
         }
 
         public void Dispose()

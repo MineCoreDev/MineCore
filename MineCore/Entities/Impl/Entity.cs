@@ -4,5 +4,9 @@
     {
         public long EntityId { get; }
         public long EntityRuntimeId { get; }
+        public void Close()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

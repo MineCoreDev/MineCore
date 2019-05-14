@@ -76,6 +76,8 @@ namespace MineCore.Net.Impl
             RegisterDataPacket(CLIENT_TO_SERVER_HANDSHAKE_PACKET, typeof(ClientToServerHandshakePacket));
             RegisterDataPacket(DISCONNECT_PACKET, typeof(DisconnectPacket));
             RegisterDataPacket(RESOURCE_PACKS_INFO_PACKET, typeof(ResourcePacksInfoPacket));
+            RegisterDataPacket(RESOURCE_PACK_STACK_PACKET, typeof(ResourcePackStackPacket));
+            RegisterDataPacket(RESOURCE_PACK_CLIENT_RESPONSE_PACKET, typeof(ResourcePackClientResponsePacket));
 
             Compile();
         }
