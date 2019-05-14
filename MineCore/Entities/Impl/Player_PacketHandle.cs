@@ -28,7 +28,7 @@ namespace MineCore.Entities.Impl
                 OnResourcePackClientResponsePacket(resourcePackClientResponse);
             }
 
-            packet.Close();
+            packet.Dispose();
         }
 
         private void OnLoginPacket(LoginPacket packet)

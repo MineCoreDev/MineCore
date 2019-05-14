@@ -93,8 +93,6 @@ namespace MineCore.Net.Impl
         private void HandleBatchPacket(BatchPacket packet)
         {
             byte[] data = CompressionManager.DecompressionZlib(new BinaryStream(packet.Payload), true);
-            packet.Close();
-
             using (NetworkStream stream = new NetworkStream(data))
             {
                 while (!stream.IsEndOfStream())
@@ -112,6 +110,8 @@ namespace MineCore.Net.Impl
                     player?.HandleDataPacket(pk);
                 }
             }
+
+            packet.Dispose();
         }
     }
 }
