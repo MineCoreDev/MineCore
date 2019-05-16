@@ -6,6 +6,7 @@ using BinaryIO.Compression;
 using MineCore.Configs;
 using MineCore.Entities;
 using MineCore.Entities.Impl;
+using MineCore.Languages;
 using MineCore.Net.Protocols;
 using MineCore.Platforms;
 using MineCore.Utils;
@@ -77,12 +78,16 @@ namespace MineCore.Net.Impl
             e.Peer.HandleBatchPacket = HandleBatchPacket;
             _players.TryAdd(e.Peer.PeerEndPoint, serverPlayer);
 
+            _logger.Info(StringManager.GetString("minecore.connection", e.Peer.PeerEndPoint));
+
             ServerListData.JoinedPlayer = _players.Count;
             UpdateServerList();
         }
 
         private void Server_DisconnectPeerEvent(object sender, ServerDisconnectPeerEventArgs e)
         {
+            _logger.Info(StringManager.GetString("minecore.disconnection", e.Peer.PeerEndPoint));
+
             _players.TryRemove(e.Peer.PeerEndPoint, out IServerPlayer player);
             player.Dispose();
 

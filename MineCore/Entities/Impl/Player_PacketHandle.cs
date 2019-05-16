@@ -1,4 +1,5 @@
 ﻿using System;
+using MineCore.Languages;
 using MineCore.Net.Protocols;
 using MineCore.Net.Protocols.Defaults;
 using MineCore.Utils;
@@ -33,11 +34,15 @@ namespace MineCore.Entities.Impl
 
         private void OnLoginPacket(LoginPacket packet)
         {
+            LoginData = packet.LoginData;
+            ClientData = packet.ClientData;
+
             PlayStatusPacket pk = new PlayStatusPacket();
             if (packet.Protocol > Protocol.ProtocolNumber)
             {
                 pk.Status = PlayStatusPacket.LOGIN_FAILED_SERVER;
                 SendDataPacket(pk);
+                _logger.Info("minecore.login.failedServer", LoginData.DisplayName, ClientPeer.PeerEndPoint);
                 return;
             }
 
@@ -45,6 +50,7 @@ namespace MineCore.Entities.Impl
             {
                 pk.Status = PlayStatusPacket.LOGIN_FAILED_CLIENT;
                 SendDataPacket(pk);
+                _logger.Info("minecore.login.failedClient", LoginData.DisplayName, ClientPeer.PeerEndPoint);
                 return;
             }
 
@@ -52,17 +58,19 @@ namespace MineCore.Entities.Impl
             {
                 pk.Status = PlayStatusPacket.LOGIN_FAILED_SERVER_FULL;
                 SendDataPacket(pk);
+                _logger.Info("minecore.login.serverFull", LoginData.DisplayName, ClientPeer.PeerEndPoint);
                 return;
             }
 
             if (ServerConfig.UseXboxLiveAuth && !packet.TokenValidated)
             {
-                Close("xbox.auth.error");
+                Close("disconnectionScreen.notAuthenticated");
+                _logger.Info("minecore.login.faildXbox", LoginData.DisplayName, ClientPeer.PeerEndPoint);
                 return;
             }
 
-            LoginData = packet.LoginData;
-            ClientData = packet.ClientData;
+            _logger.Info(StringManager.GetString("minecore.login", LoginData.DisplayName, EntityId,
+                ClientPeer.PeerEndPoint));
 
             if (ServerConfig.UseEncryption)
             {
@@ -91,6 +99,8 @@ namespace MineCore.Entities.Impl
         {
             IsEncrypt = true;
 
+            _logger.Info(StringManager.GetString("minecore.login.enableEncrypt", LoginData.DisplayName,
+                ClientPeer.PeerEndPoint));
             LoginSuccess();
         }
 

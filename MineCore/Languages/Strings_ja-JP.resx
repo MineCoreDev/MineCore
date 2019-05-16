@@ -129,6 +129,12 @@
   <data name="minecore.config.upgrade" xml:space="preserve">
     <value>設定ファイル {0} を更新しました。</value>
   </data>
+  <data name="minecore.connection" xml:space="preserve">
+    <value>{0} が接続を開始しました。</value>
+  </data>
+  <data name="minecore.disconnection" xml:space="preserve">
+    <value>{0} が接続を切断しました。</value>
+  </data>
   <data name="minecore.list.platform" xml:space="preserve">
     <value>MCPE</value>
   </data>
@@ -137,6 +143,24 @@
   </data>
   <data name="minecore.list.systemName" xml:space="preserve">
     <value>MineCore</value>
+  </data>
+  <data name="minecore.login" xml:space="preserve">
+    <value>{0} が EntityId: {1} でログインしました。&lt;{2}&gt;</value>
+  </data>
+  <data name="minecore.login.enableEncrypt" xml:space="preserve">
+    <value>{0} の暗号化が有効になりました。&lt;{1}&gt;</value>
+  </data>
+  <data name="minecore.login.faildXbox" xml:space="preserve">
+    <value>{0} はXboxアカウントの認証に失敗したため、ログアウトしました。&lt;{1}&gt;</value>
+  </data>
+  <data name="minecore.login.failedClient" xml:space="preserve">
+    <value>{0} はクライアントが古いため、ログアウトしました。。&lt;{1}&gt;</value>
+  </data>
+  <data name="minecore.login.failedServer" xml:space="preserve">
+    <value>サーバーが古いため、ログアウトしました。&lt;{0}&gt;</value>
+  </data>
+  <data name="minecore.login.serverFull" xml:space="preserve">
+    <value>{0} はサーバーが満員のため、ログアウトしました。&lt;{1}&gt;</value>
   </data>
   <data name="minecore.mojang.rootKey" xml:space="preserve">
     <value>MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAE8ELkixyLcwlZryUQcu1TvPOmI2B7vX83ndnWRUaXm74wFfa5f/lwQNTfrLVHa2PmenpGI6JhIMUJaWZrjmMj90NoKNFSNBuKdm8rYiXsfaz3K36x/1U26HpG0ZxK/V1V</value>
@@ -149,5 +173,8 @@
   </data>
   <data name="minecore.thread.main" xml:space="preserve">
     <value>Main</value>
+  </data>
+  <data name="minecore.thread.network" xml:space="preserve">
+    <value>Network</value>
   </data>
 </root>
