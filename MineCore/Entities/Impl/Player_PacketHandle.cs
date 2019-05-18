@@ -126,7 +126,7 @@ namespace MineCore.Entities.Impl
             }
             else if (packet.ResponseStatus == ResourcePackClientResponsePacket.STATUS_COMPLETED)
             {
-                _logger.Info("start");
+
             }
         }
     }
