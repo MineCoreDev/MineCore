@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using BinaryIO;
+using MineCore.Data;
 using Optional;
 
 namespace MineCore.Blocks
@@ -15,6 +16,12 @@ namespace MineCore.Blocks
         Option<IBlock> GetBlockFromId(int id, int data);
         Option<IBlock> GetBlockFromRuntime(int runtimeId);
 
-        BinaryStream GetRuntimeTable();
+        IRuntimeBlockData GetRuntimeBlockData(int id, int data);
+        IRuntimeBlockData GetRuntimeBlockData(int runtimeId);
+
+        void RegisterRuntimeId(IRuntimeBlockData runtimeBlockData);
+
+        byte[] GetRuntimeTable();
+        void CompileRuntimeTable();
     }
 }

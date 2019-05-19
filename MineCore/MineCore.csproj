@@ -19,11 +19,20 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Resources\FileResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>FileResources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
       <EmbeddedResource Update="Languages\Strings_ja-JP.resx">
         <Generator></Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Resources.resx">
-        <Generator></Generator>
+      <EmbeddedResource Update="Resources\FileResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>FileResources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
