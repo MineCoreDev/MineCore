@@ -28,6 +28,10 @@ namespace MineCore.Entities.Impl
             {
                 OnResourcePackClientResponsePacket(resourcePackClientResponse);
             }
+            else if (packet is RequestChunkRadiusPacket requestChunkRadiusPacket)
+            {
+                OnRequestChunkRadiusPacket(requestChunkRadiusPacket);
+            }
 
             packet.Dispose();
         }
@@ -126,8 +130,20 @@ namespace MineCore.Entities.Impl
             }
             else if (packet.ResponseStatus == ResourcePackClientResponsePacket.STATUS_COMPLETED)
             {
+                StartGamePacket startGamePacket = new StartGamePacket();
+                SendDataPacket(startGamePacket);
 
+                PlayStatusPacket playStatusPacket = new PlayStatusPacket();
+                playStatusPacket.Status = PlayStatusPacket.PLAYER_SPAWN;
+                SendDataPacket(playStatusPacket);
             }
+        }
+
+        void OnRequestChunkRadiusPacket(RequestChunkRadiusPacket packet)
+        {
+            ChunkRadiusUpdatedPacket chunkRadiusUpdatedPacket = new ChunkRadiusUpdatedPacket();
+            chunkRadiusUpdatedPacket.Radius = packet.Radius;
+            SendDataPacket(chunkRadiusUpdatedPacket);
         }
     }
 }

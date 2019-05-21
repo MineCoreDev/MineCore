@@ -19,6 +19,18 @@ namespace MineCore.Net.Impl
         public const byte RESOURCE_PACKS_INFO_PACKET = 0x06;
         public const byte RESOURCE_PACK_STACK_PACKET = 0x07;
         public const byte RESOURCE_PACK_CLIENT_RESPONSE_PACKET = 0x08;
+        public const byte TEXT_PACKET = 0x09;
+        public const byte SET_TIME_PACKET = 0x0a;
+        public const byte START_GAME_PACKET = 0x0b;
+        public const byte ADD_PLAYER_PACKET = 0x0c;
+        public const byte ADD_ENTITY_PACKET = 0x0d;
+        public const byte REMOVE_ENTITY_PACKET = 0x0e;
+        public const byte ADD_ITEM_ENTITY_PACKET = 0x0f;
+
+        public const byte FULL_CHUNK_DATA_PACKET = 0x3a;
+
+        public const byte REQUEST_CHUNK_RADIUS_PACKET = 0x45;
+        public const byte CHUNK_RADIUS_UPDATED_PACKET = 0x46;
 
         public int ProtocolNumber => 354;
 
@@ -78,6 +90,9 @@ namespace MineCore.Net.Impl
             RegisterDataPacket(RESOURCE_PACKS_INFO_PACKET, typeof(ResourcePacksInfoPacket));
             RegisterDataPacket(RESOURCE_PACK_STACK_PACKET, typeof(ResourcePackStackPacket));
             RegisterDataPacket(RESOURCE_PACK_CLIENT_RESPONSE_PACKET, typeof(ResourcePackClientResponsePacket));
+
+            RegisterDataPacket(REQUEST_CHUNK_RADIUS_PACKET, typeof(RequestChunkRadiusPacket));
+            RegisterDataPacket(CHUNK_RADIUS_UPDATED_PACKET, typeof(ChunkRadiusUpdatedPacket));
 
             Compile();
         }

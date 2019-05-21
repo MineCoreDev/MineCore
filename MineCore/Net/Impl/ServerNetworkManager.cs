@@ -104,6 +104,8 @@ namespace MineCore.Net.Impl
                 {
                     int len = stream.ReadVarInt();
                     byte[] payload = stream.ReadBytes(len);
+                    _logger.Info(payload[0].ToString("X"));
+
                     DataPacket pk = Protocol.GetDefinedPacket(payload[0]).ValueOrFailure();
 
                     pk.SetBuffer(payload);
