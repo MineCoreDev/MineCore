@@ -1,7 +1,8 @@
-﻿namespace MineCore.Factories
+﻿using MineCore.Blocks;
+
+namespace MineCore.Factories
 {
-    public interface IBlockFactory
+    public interface IBlockFactory : IFactory<int, IBlock>
     {
-        
     }
 }

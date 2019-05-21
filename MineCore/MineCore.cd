@@ -80,7 +80,7 @@
   <Interface Name="MineCore.Factories.IFactoryManager" Collapsed="true">
     <Position X="7.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>QAAAAAAAAAAAAAAAAAgAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\IFactoryManager.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -94,7 +94,7 @@
   <Interface Name="MineCore.Extensions.IExtensionManager" Collapsed="true">
     <Position X="7.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AgAAAAgAAAAAAAAAAAAAAAAAAAIAAAABAIAAAAAAAAA=</HashCode>
       <FileName>Extensions\IExtensionManager.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -108,7 +108,7 @@
   <Interface Name="MineCore.Entities.IEntityHuman" Collapsed="true">
     <Position X="17.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAEAAABAAAAAAAAQAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAEAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>Entities\IEntityHuman.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -192,18 +192,11 @@
       <Property Name="LoginData" />
     </ShowAsAssociation>
   </Interface>
-  <Interface Name="MineCore.Factories.IFactory" Collapsed="true">
+  <Interface Name="MineCore.Factories.IFactory&lt;K, V&gt;" Collapsed="true">
     <Position X="10.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAACAAABAAAAAAAAAAAAAEg=</HashCode>
       <FileName>Factories\IFactory.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Extensions.IExtension" Collapsed="true">
-    <Position X="12.5" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Extensions\IExtension.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MineCore.Network.IServerList" Collapsed="true">
@@ -290,14 +283,17 @@
   <Interface Name="MineCore.Extensions.IExtensionPack" Collapsed="true">
     <Position X="10.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAACAAAAAACAAAAAAAAAAgAACAAAAACAAAAABAA=</HashCode>
       <FileName>Extensions\IExtensionPack.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Dependencies" />
+    </ShowAsCollectionAssociation>
   </Interface>
   <Interface Name="MineCore.Extensions.IExtensionPackDependency" Collapsed="true">
-    <Position X="14.75" Y="4.25" Width="2" />
+    <Position X="13.25" Y="4.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Extensions\IExtensionPackDependency.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -417,6 +413,20 @@
     <ShowAsAssociation>
       <Property Name="Skin" />
     </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MineCore.Factories.IBlockFactory" Collapsed="true">
+    <Position X="10.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\IBlockFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Factories.IPacketFactory" Collapsed="true">
+    <Position X="12" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\IPacketFactory.cs</FileName>
+    </TypeIdentifier>
   </Interface>
   <Font Name="Yu Gothic UI" Size="9" />
 </ClassDiagram>
