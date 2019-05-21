@@ -39,5 +39,7 @@ namespace MineCore.Entities
 
         void SpawnToAll();
         void DeSpawnToAll();
+
+        void OnUpdate(int ticks);
     }
 }

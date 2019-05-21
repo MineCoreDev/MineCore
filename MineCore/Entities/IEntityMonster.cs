@@ -1,6 +1,6 @@
 ﻿namespace MineCore.Entities
 {
-    public interface IEntityMonster : IEntityLiving
+    public interface IEntityMonster : IEntityGrowable
     {
     }
 }

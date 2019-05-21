@@ -108,9 +108,12 @@
   <Interface Name="MineCore.Entities.IEntityHuman" Collapsed="true">
     <Position X="17.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAEAAABAAAAAAAAQAAAAA=</HashCode>
       <FileName>Entities\IEntityHuman.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ClientData" />
+    </ShowAsAssociation>
   </Interface>
   <Interface Name="MineCore.Entities.IEntityLiving" Collapsed="true">
     <Position X="20.25" Y="2.75" Width="1.5" />
@@ -120,7 +123,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAASAAAIAAAAAAAAAAAAAAQAAAAAAACAAAAAABAAAA=</HashCode>
+      <HashCode>AAAASAAAIAAAAAAAAEAAAAAQAAAAAAACAAAAAABAAAA=</HashCode>
       <FileName>Entities\IEntityLiving.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -128,13 +131,12 @@
     </ShowAsAssociation>
   </Interface>
   <Interface Name="MineCore.Entities.IEntityNpc" Collapsed="true">
-    <Position X="23.25" Y="3.75" Width="1.5" />
-    <InheritanceLine Type="MineCore.Entities.IEntityLiving" FixedFromPoint="true">
+    <Position X="24.75" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="MineCore.Entities.IEntityGrowable" FixedToPoint="true">
       <Path>
-        <Point X="21.75" Y="3.313" />
-        <Point X="22.125" Y="3.313" />
-        <Point X="22.125" Y="4.096" />
-        <Point X="23.25" Y="4.096" />
+        <Point X="23.25" Y="3.441" />
+        <Point X="23.25" Y="4.125" />
+        <Point X="24.75" Y="4.125" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -143,33 +145,26 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="MineCore.Entities.IEntityRideable" Collapsed="true">
-    <Position X="23.25" Y="4.75" Width="1.5" />
+    <Position X="23.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>gAAAACAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Entities\IEntityRideable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MineCore.Entities.IEntityMonster" Collapsed="true">
-    <Position X="23.25" Y="2.75" Width="1.5" />
-    <InheritanceLine Type="MineCore.Entities.IEntityLiving" FixedFromPoint="true">
-      <Path>
-        <Point X="21.75" Y="3.125" />
-        <Point X="23.25" Y="3.125" />
-      </Path>
-    </InheritanceLine>
+    <Position X="24.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\IEntityMonster.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MineCore.Entities.IEntityAnimal" Collapsed="true">
-    <Position X="23.25" Y="1.75" Width="1.5" />
-    <InheritanceLine Type="MineCore.Entities.IEntityLiving" FixedFromPoint="true">
+    <Position X="24.75" Y="1.75" Width="1.5" />
+    <InheritanceLine Type="MineCore.Entities.IEntityGrowable" FixedToPoint="true">
       <Path>
-        <Point X="21.75" Y="2.875" />
-        <Point X="22.125" Y="2.875" />
-        <Point X="22.125" Y="2.096" />
-        <Point X="23.25" Y="2.096" />
+        <Point X="23.25" Y="2.75" />
+        <Point X="23.25" Y="2.062" />
+        <Point X="24.75" Y="2.062" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -178,9 +173,9 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="MineCore.Entities.IEntity" Collapsed="true">
-    <Position X="20.25" Y="4.75" Width="1.5" />
+    <Position X="20.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAACCCAAJAEQAEAAAQAAAEAIAAJUQAAIAAAARAAAAIA=</HashCode>
+      <HashCode>EAACCCAAJAEQAEAAAQAAAEAIAAJUQAAIAAAARAEAAIA=</HashCode>
       <FileName>Entities\IEntity.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -188,11 +183,14 @@
     </ShowAsAssociation>
   </Interface>
   <Interface Name="MineCore.Entities.IPlayer" Collapsed="true">
-    <Position X="14" Y="2.75" Width="1.5" />
+    <Position X="14.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\IPlayer.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LoginData" />
+    </ShowAsAssociation>
   </Interface>
   <Interface Name="MineCore.Factories.IFactory" Collapsed="true">
     <Position X="10.25" Y="6.5" Width="1.5" />
@@ -311,7 +309,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="MineCore.Entities.Attributes.IEntityAttribute" Collapsed="true">
-    <Position X="23.25" Y="0.75" Width="1.5" />
+    <Position X="22.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAgAAAAAAAQAAABAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Entities\Attributes\IEntityAttribute.cs</FileName>
@@ -337,6 +335,88 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Entities\MetaDatas\IEntityDataProperty.cs</FileName>
     </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Blocks.IBlock" Collapsed="true">
+    <Position X="25.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKACAAAAAAgAAAAAgAgAQBQAAEAAggEACAAAAQEAAAI=</HashCode>
+      <FileName>Blocks\IBlock.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BlockState" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MineCore.Blocks.IBlockState" Collapsed="true">
+    <Position X="28.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Blocks\IBlockState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.IEntityGrowable" Collapsed="true">
+    <Position X="22.5" Y="2.75" Width="1.5" />
+    <InheritanceLine Type="MineCore.Entities.IEntityLiving" FixedFromPoint="true">
+      <Path>
+        <Point X="21.75" Y="3.125" />
+        <Point X="22.5" Y="3.125" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIABAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Entities\IEntityGrowable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.IEntityAttackable" Collapsed="true">
+    <Position X="20.25" Y="4" Width="1.5" />
+    <AssociationLine Name="LastDamageEvent" Type="MineCore.Entities.Events.IEntityDamageEvent" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="21.75" Y="4.375" />
+        <Point X="24.5" Y="4.375" />
+        <Point X="24.5" Y="5.062" />
+        <Point X="28.25" Y="5.062" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.102" Y="0.093" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IEntityAttackable.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LastDamageEvent" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MineCore.Entities.Events.IEntityDamageEvent" Collapsed="true">
+    <Position X="28.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Entities\Events\IEntityDamageEvent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Data.ISkin" Collapsed="true">
+    <Position X="14.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\ISkin.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Data.ILoginData" Collapsed="true">
+    <Position X="12.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Data\ILoginData.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Data.IClientData" Collapsed="true">
+    <Position X="17.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAgAAAAQAAAAQQAAAAAAAAAAgCAUEAAA=</HashCode>
+      <FileName>Data\IClientData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Skin" />
+    </ShowAsAssociation>
   </Interface>
   <Font Name="Yu Gothic UI" Size="9" />
 </ClassDiagram>

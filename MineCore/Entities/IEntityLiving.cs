@@ -2,7 +2,7 @@
 
 namespace MineCore.Entities
 {
-    public interface IEntityLiving : IEntity
+    public interface IEntityLiving : IEntityAttackable
     {
         float Health { get; set; }
         float AbsorptionAmount { get; set; }
@@ -10,6 +10,8 @@ namespace MineCore.Entities
         short HurtTime { get; }
         int HurtByTimestamp { get; }
         short DeathTime { get; }
+
+        int Age { get; }
 
         IEntityAttributeDictionary Attributes { get; set; }
     }

@@ -6,5 +6,6 @@ namespace MineCore.Entities
 {
     public interface IPlayer : IEntityHuman
     {
+        Data.ILoginData LoginData { get; set; }
     }
 }
