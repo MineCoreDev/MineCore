@@ -174,6 +174,13 @@
   </Interface>
   <Interface Name="MineCore.Entities.IEntity" Collapsed="true">
     <Position X="20.25" Y="5.5" Width="1.5" />
+    <AssociationLine Name="DataProperties" Type="MineCore.Entities.MetaDatas.IEntityDataDictionary" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="21.438" Y="6.191" />
+        <Point X="21.438" Y="7.031" />
+        <Point X="23.25" Y="7.031" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>EAACCCAAJAEQAEAAAQAAAEAIAAJUQAAIAAAARAEAAIA=</HashCode>
       <FileName>Entities\IEntity.cs</FileName>
@@ -333,17 +340,24 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="MineCore.Blocks.IBlock" Collapsed="true">
-    <Position X="25.75" Y="8" Width="1.5" />
+    <Position X="28.25" Y="8" Width="1.5" />
+    <InheritanceLine Type="MineCore.Values.IBlockPosition3d" FixedFromPoint="true">
+      <Path>
+        <Point X="24.75" Y="8.188" />
+        <Point X="28.25" Y="8.188" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AKACAAAAAAgAAAAAgAgAQBQAAEAAggEACAAAAQEAAAI=</HashCode>
       <FileName>Blocks\IBlock.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="BlockState" />
+      <Property Name="ItemBlock" />
     </ShowAsAssociation>
   </Interface>
   <Interface Name="MineCore.Blocks.IBlockState" Collapsed="true">
-    <Position X="28.25" Y="8" Width="1.5" />
+    <Position X="31" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Blocks\IBlockState.cs</FileName>
@@ -426,6 +440,65 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\IPacketFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Items.IItem" Collapsed="true">
+    <Position X="28.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\IItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.BlockEntities.IBlockEntity" Collapsed="true">
+    <Position X="25.75" Y="9.75" Width="1.5" />
+    <InheritanceLine Type="MineCore.Values.IBlockPosition3d" FixedFromPoint="true">
+      <Path>
+        <Point X="24.75" Y="8.5" />
+        <Point X="25.125" Y="8.5" />
+        <Point X="25.125" Y="10.096" />
+        <Point X="25.75" Y="10.096" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockEntities\IBlockEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.BlockEntities.IBlockEntityContainer" Collapsed="true">
+    <Position X="25.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockEntities\IBlockEntityContainer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Commands.ICommand" Collapsed="true">
+    <Position X="30.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ICommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Components.IComponent" Collapsed="true">
+    <Position X="23.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\IComponent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Components.IComponentAttachable" Collapsed="true">
+    <Position X="20.25" Y="11.75" Width="1.5" />
+    <InheritanceLine Type="MineCore.Entities.IEntity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="20.562" Y="6.191" />
+        <Point X="20.562" Y="6.566" />
+        <Point X="19.875" Y="6.566" />
+        <Point X="19.875" Y="12.125" />
+        <Point X="20.25" Y="12.125" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\IComponentAttachable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Yu Gothic UI" Size="9" />
