@@ -1,18 +1,10 @@
 ﻿using System;
-using MineCore.Data;
-using MineCore.Net;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MineCore.Entities
 {
-    public interface IPlayer : IHuman, IDisposable
+    public interface IPlayer : IEntityHuman
     {
-        IMineCraftProtocol Protocol { get; }
-
-        ILoginData LoginData { get; }
-        IClientData ClientData { get; }
-
-        bool IsEncrypt { get; }
-
-        void Close(string message);
     }
 }

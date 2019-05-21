@@ -1,619 +1,342 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="MineCore.ComponentModel.Impl.ComponentDefinitions" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="37" Y="0.5" Width="1.5" />
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="MineCore.Configs.IConfigManager" Collapsed="true">
+    <Position X="7.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAIAAJAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ComponentModel\Impl\ComponentDefinitions.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.ComponentModel.DefineComponentAttribute" Collapsed="true">
-    <Position X="38.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ComponentModel\DefineComponentAttribute.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Configs.Impl.Config">
-    <Position X="23.75" Y="8.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
-      <FileName>Configs\Impl\Config.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="MineCore.Configs.Impl.PlatformConfig">
-    <Position X="22.5" Y="11" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAABAAAA=</HashCode>
-      <FileName>Configs\Impl\PlatformConfig.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="MineCore.Configs.Impl.ServerPlatformConfig">
-    <Position X="24.75" Y="11" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAACIAABAAAAAAAAgAAAAAAAAAABAAAA=</HashCode>
-      <FileName>Configs\Impl\ServerPlatformConfig.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="MineCore.Console.Impl.MineCoreConsole" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="37" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAAAAAAAADAAAAAAAAAAQAAAIAAAAAAABAAAAAAAgAA=</HashCode>
-      <FileName>Console\Impl\MineCoreConsole.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.Console.Logging.Impl.MineCoreConsoleTarget" Collapsed="true">
-    <Position X="38.75" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAAA=</HashCode>
-      <FileName>Console\Logging\Impl\MineCoreConsoleTarget.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Console.Logging.Impl.MineCoreLoggerConfig" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="40.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAACAAAACAIAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
-      <FileName>Console\Logging\Impl\MineCoreLoggerConfig.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.Console.Logging.Impl.NLogConfigBuilder" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="35.25" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
-      <FileName>Console\Logging\Impl\NLogConfigBuilder.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.Data.Impl.ClientData" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="35.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAgAAAAQAAAAQQAAAAAAAAAAgCAUEAAA=</HashCode>
-      <FileName>Data\Impl\ClientData.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.Data.Impl.LoginData" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="35.25" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
-      <FileName>Data\Impl\LoginData.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.Data.Impl.ResourcePackInfo" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="38.75" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAgAAAAIAAAAQAAAAAAQAAQAAEAABAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\Impl\ResourcePackInfo.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.Data.Impl.Skin" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="35.25" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAIAAAAEAAAABAAAAAAAAAAAAgAAAA=</HashCode>
-      <FileName>Data\Impl\Skin.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.Entities.Impl.Entity">
-    <Position X="4.5" Y="7.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAA=</HashCode>
-      <FileName>Entities\Impl\Entity.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="MineCore.Entities.Impl.ServerPlayer">
-    <Position X="4.5" Y="10" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABgCAACAACAAAAAAEBAAABBAIAAAARAAAAAAAoCAAAA=</HashCode>
-      <FileName>Entities\Impl\Player_PacketHandle.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="ClientData" />
-      <Property Name="ClientPeer" />
-      <Property Name="LoginData" />
-      <Property Name="Protocol" />
-      <Property Name="ServerConfig" />
-      <Property Name="ServerListData" />
-    </ShowAsAssociation>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="MineCore.Events.Extensions.ExtensionPackageLoaderEventArgs">
-    <Position X="6.25" Y="18.5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Events\Extensions\ExtensionPackageLoaderEventArgs.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Events.Extensions.ExtensionPackageLoadEventArgs">
-    <Position X="4.5" Y="21" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Events\Extensions\ExtensionPackageLoadEventArgs.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Events.Extensions.ExtensionPackageUnloadEventArgs">
-    <Position X="7.75" Y="21" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Events\Extensions\ExtensionPackageUnloadEventArgs.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Events.CancelableEventArgs">
-    <Position X="6.5" Y="16.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>BAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Events\CancelableEventArgs.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="MineCore.Events.EventArgsManager" Collapsed="true">
-    <Position X="40.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Events\EventArgsManager.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Extensions.ExtensionServiceAttribute" Collapsed="true">
-    <Position X="42.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Extensions\ExtensionServiceAttribute.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Languages.StringManager" Collapsed="true">
-    <Position X="37" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAACAAAAAAA=</HashCode>
-      <FileName>Languages\StringManager.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Net.Impl.MineCraftProtocol" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="42.25" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IARAQAAEIACAEAEIAQAAAAAAAAAAAAAAASACAAAEAEA=</HashCode>
-      <FileName>Net\Impl\MineCraftProtocol.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.Net.Impl.ServerListData" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="40.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAAAAAAAIAAAAACAAAAABEAAAAAAAAAACgAIQAAAAAA=</HashCode>
-      <FileName>Net\Impl\ServerListData.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.Net.Impl.ServerNetworkManager" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="42.25" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAMCBAAAAAQAAAAABAIBAAABAgAAAAAIAEAAA=</HashCode>
-      <FileName>Net\Impl\ServerNetworkManager.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.Net.Protocols.Defaults.ClientToServerHandshakePacket">
-    <Position X="14.25" Y="3.75" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Net\Protocols\Defaults\ClientToServerHandshakePacket.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Net.Protocols.Defaults.DisconnectPacket">
-    <Position X="17.5" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAEBAAAEAAAAAAAAAAAAIAAAAAA=</HashCode>
-      <FileName>Net\Protocols\Defaults\DisconnectPacket.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Net.Protocols.Defaults.LoginPacket">
-    <Position X="19.75" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAgAACQAAAAAAAAAAEBABBAAAAAAAAIAAIAAAAAACA=</HashCode>
-      <FileName>Net\Protocols\Defaults\LoginPacket.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Net.Protocols.Defaults.PlayStatusPacket">
-    <Position X="22" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAEBAIAAAAABAEBAAAABAwAEAAAAAAAAAAAAAQ=</HashCode>
-      <FileName>Net\Protocols\Defaults\PlayStatusPacket.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Net.Protocols.Defaults.ResourcePackClientResponsePacket">
-    <Position X="24.25" Y="3.75" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>EBAAAAAAAAAAAAgAAQEBAAAAAIAAAAAAAAAAAABAAAA=</HashCode>
-      <FileName>Net\Protocols\Defaults\ResourcePackClientResponsePacket.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Net.Protocols.Defaults.ResourcePacksInfoPacket">
-    <Position X="5.5" Y="3.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAEBAAAAgAAAAAAAAIEAAAAAAMA=</HashCode>
-      <FileName>Net\Protocols\Defaults\ResourcePacksInfoPacket.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Net.Protocols.Defaults.ResourcePackStackPacket">
-    <Position X="8.25" Y="3.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>EAAAIAAAAAAAAAAAAAEBAAAAAAAAAAAAAIEAAAAAAMA=</HashCode>
-      <FileName>Net\Protocols\Defaults\ResourcePackStackPacket.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Net.Protocols.Defaults.ServerToClientHandshakePacket">
-    <Position X="11" Y="3.75" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
-      <FileName>Net\Protocols\Defaults\ServerToClientHandshakePacket.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Net.Protocols.DataPacket">
-    <Position X="15.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAkAAAAAAQAAAEBAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Net\Protocols\DataPacket.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MineCore.Platforms.Impl.Platform" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="8.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AASAAAAAAiAAAAAAAAAQAAAAAAAAAAAAIQACBAAAAAA=</HashCode>
-      <FileName>Platforms\Impl\Platform.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Config" />
-      <Property Name="Console" />
-      <Property Name="PlatformLogger" />
-      <Property Name="State" />
-    </ShowAsAssociation>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="MineCore.Utils.NullExtensions" Collapsed="true">
-    <Position X="37" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
-      <FileName>Utils\NullExtensions.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="NLog.Logger" Collapsed="true">
-    <Position X="1.75" Y="7" Width="1.5" />
-    <TypeIdentifier />
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="RakDotNet.Minecraft.MinecraftPeer" Collapsed="true">
-    <Position X="16.25" Y="11" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Interface Name="MineCore.ComponentModel.IComponent">
-    <Position X="14.75" Y="14.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACAA=</HashCode>
-      <FileName>ComponentModel\IComponent.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAgACAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Configs\IConfigManager.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="MineCore.ComponentModel.IComponentDefinitions" Collapsed="true">
-    <Position X="37" Y="4.75" Width="1.5" />
+  <Interface Name="MineCore.Network.INetworkManager" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ComponentModel\IComponentDefinitions.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.ComponentModel.IComponentProperty&lt;T&gt;" Collapsed="true">
-    <Position X="38.75" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
-      <FileName>ComponentModel\IComponentProperty.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Configs.IConfig">
-    <Position X="8.75" Y="11.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
-      <FileName>Configs\IConfig.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Configs.IPlatformConfig">
-    <Position X="7.5" Y="13.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
-      <FileName>Configs\IPlatformConfig.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Configs.IServerPlatformConfig">
-    <Position X="9.75" Y="13.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAACIAABAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Configs\IServerPlatformConfig.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Console.Logging.ILoggerConfig" Collapsed="true">
-    <Position X="35.25" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAACAAAACAIAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
-      <FileName>Console\Logging\ILoggerConfig.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Console.Logging.INLogConfigBuilder" Collapsed="true">
-    <Position X="37" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
-      <FileName>Console\Logging\INLogConfigBuilder.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Console.IConsole">
-    <Position X="2.75" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
-      <FileName>Console\IConsole.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Data.IClientData" Collapsed="true">
-    <Position X="4.5" Y="14.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAgAAAAQAAAAQQAAAAAAAAAAgCAUEAAA=</HashCode>
-      <FileName>Data\IClientData.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Data.IDescription">
-    <Position X="23" Y="15.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\IDescription.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Data.ILoginData" Collapsed="true">
-    <Position X="0.5" Y="15.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
-      <FileName>Data\ILoginData.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Data.IName">
-    <Position X="16.25" Y="12.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\IName.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Data.IResourcePack" Collapsed="true">
-    <Position X="38.75" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAgAAAAIAAAAQAAAAAAQAAQAAEAABAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\IResourcePack.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Data.ISkin" Collapsed="true">
-    <Position X="40.5" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAIAAAAEAAAABAAAAAAAAAAAAgAAAA=</HashCode>
-      <FileName>Data\ISkin.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Entities.IAnimal">
-    <Position X="32.75" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Entities\IAnimal.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Entities.IClientPlayer">
-    <Position X="13.75" Y="8.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Entities\IClientPlayer.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Entities.IEntity">
-    <Position X="27.75" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAA=</HashCode>
-      <FileName>Entities\IEntity.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Entities.IEntityLiving">
-    <Position X="27.75" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Entities\IEntityLiving.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Entities.IHuman">
-    <Position X="27.75" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Entities\IHuman.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Entities.IMonster">
-    <Position X="30.5" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Entities\IMonster.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Entities.IPlayer">
-    <Position X="16.75" Y="7.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAAAABAAABBAAAAAAAAAAAAAAACAAAA=</HashCode>
-      <FileName>Entities\IPlayer.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Entities.IServerPlayer">
-    <Position X="13.75" Y="10.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAIAAAABAAAAAAAIAAAAA=</HashCode>
-      <FileName>Entities\IServerPlayer.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="ClientPeer" />
-      <Property Name="ServerConfig" />
-      <Property Name="ServerListData" />
-    </ShowAsAssociation>
-  </Interface>
-  <Interface Name="MineCore.Events.ICancelable" Collapsed="true">
-    <Position X="35.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Events\ICancelable.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Extensions.IExtensionPackage">
-    <Position X="16.25" Y="17.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IBAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAEAA=</HashCode>
-      <FileName>Extensions\IExtensionPackage.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Extensions.IExtensionPackageLoader">
-    <Position X="19.25" Y="14.25" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAIAAAAAAABAAAAAAAAAAAAAAAEAAAQAgAAAAAAiAA=</HashCode>
-      <FileName>Extensions\IExtensionPackageLoader.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.LifeCycles.IDisable" Collapsed="true">
-    <Position X="40.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
-      <FileName>LifeCycles\IDisable.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.LifeCycles.IEnable" Collapsed="true">
-    <Position X="42.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
-      <FileName>LifeCycles\IEnable.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.LifeCycles.ILoadable">
-    <Position X="12.5" Y="15.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>LifeCycles\ILoadable.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.LifeCycles.IUnloadable">
-    <Position X="25.25" Y="15.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
-      <FileName>LifeCycles\IUnloadable.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Net.IDataPacketHandler">
-    <Position X="13.5" Y="6.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Net\IDataPacketHandler.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Net.IMineCraftProtocol">
-    <Position X="3.25" Y="16.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAAAAAAEIAAAEAAAAAAAAAAAAAAAAAAAAQAAAAAAAEA=</HashCode>
-      <FileName>Net\IMineCraftProtocol.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Net.IServerListData" Collapsed="true">
-    <Position X="11.5" Y="12.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAAAAAAAIAAAAACAAAAABEAAAAAAAAAACgAIQAAAAAA=</HashCode>
-      <FileName>Net\IServerListData.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Net.IServerNetworkManager">
-    <Position X="10" Y="17" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAMCAAAAAAAAAAAABAAAAAABAAAAAAAIAAAAA=</HashCode>
-      <FileName>Net\IServerNetworkManager.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Network\INetworkManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Protocol" />
-      <Property Name="ServerConfig" />
-      <Property Name="ServerListData" />
     </ShowAsAssociation>
   </Interface>
-  <Interface Name="MineCore.Platforms.IClientPlatform">
-    <Position X="7.5" Y="10" Width="1.5" />
+  <Interface Name="MineCore.Platforms.IPlatform" Collapsed="true">
+    <Position X="4" Y="2.75" Width="1.5" />
+    <AssociationLine Name="ConfigManager" Type="MineCore.Configs.IConfigManager">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.227" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="NetworkManager" Type="MineCore.Network.INetworkManager" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="3.312" />
+        <Point X="4.75" Y="3.871" />
+        <Point X="7.5" Y="3.871" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="ExtensionManager" Type="MineCore.Extensions.IExtensionManager" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="3.312" />
+        <Point X="4.75" Y="4.531" />
+        <Point X="7.5" Y="4.531" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="FactoryManager" Type="MineCore.Factories.IFactoryManager" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="3.312" />
+        <Point X="4.75" Y="6.781" />
+        <Point X="7.5" Y="6.781" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="WorldManager" Type="MineCore.Worlds.IWorldManager" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="3.312" />
+        <Point X="4.75" Y="5.781" />
+        <Point X="7.5" Y="5.781" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Platforms\IClientPlatform.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MineCore.Platforms.IPlatform">
-    <Position X="8.25" Y="7.5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AACAAAAAAiAAAAAAAAAQAAAAAAAAAAAAIQAABAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAgAAAABAAAAACAABAAAAAAAAAAAACAAAAAAA=</HashCode>
       <FileName>Platforms\IPlatform.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Config" />
-      <Property Name="Console" />
-      <Property Name="PlatformLogger" />
-      <Property Name="State" />
+      <Property Name="ConfigManager" />
+      <Property Name="NetworkManager" />
+      <Property Name="ExtensionManager" />
+      <Property Name="FactoryManager" />
+      <Property Name="WorldManager" />
     </ShowAsAssociation>
   </Interface>
-  <Interface Name="MineCore.Platforms.IServerPlatform">
-    <Position X="9.75" Y="10" Width="1.5" />
+  <Interface Name="MineCore.Network.IProtocol" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAACAABAAAAAABAAAAAAAAAAAAA=</HashCode>
-      <FileName>Platforms\IServerPlatform.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Network\IProtocol.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="NetworkManager" />
-      <Property Name="Protocol" />
-      <Property Name="ServerConfig" />
+      <Property Name="ServerList" />
     </ShowAsAssociation>
   </Interface>
-  <Enum Name="MineCore.Configs.ConfigLoadResult" Collapsed="true">
-    <Position X="35.25" Y="6.5" Width="1.5" />
+  <Interface Name="MineCore.Factories.IFactoryManager" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAgAAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>Configs\ConfigLoadResult.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\IFactoryManager.cs</FileName>
     </TypeIdentifier>
-  </Enum>
-  <Enum Name="MineCore.Configs.ConfigSaveResult" Collapsed="true">
-    <Position X="37" Y="6.5" Width="1.5" />
+  </Interface>
+  <Interface Name="MineCore.Worlds.IWorldManager" Collapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAgAAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>Configs\ConfigSaveResult.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Worlds\IWorldManager.cs</FileName>
     </TypeIdentifier>
-  </Enum>
-  <Enum Name="MineCore.Console.Logging.LogLevels" Collapsed="true">
-    <Position X="38.75" Y="6.5" Width="1.5" />
+  </Interface>
+  <Interface Name="MineCore.Extensions.IExtensionManager" Collapsed="true">
+    <Position X="7.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAYAAAAAAAAAAAAAAABEAAAAAAEAEAAA=</HashCode>
-      <FileName>Console\Logging\LogLevels.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\IExtensionManager.cs</FileName>
     </TypeIdentifier>
-  </Enum>
-  <Enum Name="MineCore.Platforms.PlatformStartResult" Collapsed="true">
-    <Position X="40.5" Y="6.5" Width="1.5" />
+  </Interface>
+  <Interface Name="MineCore.Configs.IConfig" Collapsed="true">
+    <Position X="10.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgIAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>Platforms\PlatformStartResult.cs</FileName>
+      <HashCode>AgAAAIAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configs\IConfig.cs</FileName>
     </TypeIdentifier>
-  </Enum>
-  <Enum Name="MineCore.Platforms.PlatformState">
-    <Position X="1.75" Y="12.25" Width="1.5" />
+  </Interface>
+  <Interface Name="MineCore.Entities.IEntityHuman" Collapsed="true">
+    <Position X="17.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAABAAAAAIAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Platforms\PlatformState.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IEntityHuman.cs</FileName>
     </TypeIdentifier>
-  </Enum>
-  <Enum Name="MineCore.Platforms.PlatformStopResult" Collapsed="true">
-    <Position X="42.25" Y="6.5" Width="1.5" />
+  </Interface>
+  <Interface Name="MineCore.Entities.IEntityLiving" Collapsed="true">
+    <Position X="20.25" Y="2.75" Width="1.5" />
+    <AssociationLine Name="Attributes" Type="MineCore.Entities.Attributes.IEntityAttributeDictionary">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAgAAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>Platforms\PlatformStopResult.cs</FileName>
+      <HashCode>AAAASAAAIAAAAAAAAAAAAAAQAAAAAAACAAAAAABAAAA=</HashCode>
+      <FileName>Entities\IEntityLiving.cs</FileName>
     </TypeIdentifier>
-  </Enum>
+    <ShowAsAssociation>
+      <Property Name="Attributes" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MineCore.Entities.IEntityNpc" Collapsed="true">
+    <Position X="23.25" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="MineCore.Entities.IEntityLiving" FixedFromPoint="true">
+      <Path>
+        <Point X="21.75" Y="3.313" />
+        <Point X="22.125" Y="3.313" />
+        <Point X="22.125" Y="4.096" />
+        <Point X="23.25" Y="4.096" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IEntityNpc.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.IEntityRideable" Collapsed="true">
+    <Position X="23.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IEntityRideable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.IEntityMonster" Collapsed="true">
+    <Position X="23.25" Y="2.75" Width="1.5" />
+    <InheritanceLine Type="MineCore.Entities.IEntityLiving" FixedFromPoint="true">
+      <Path>
+        <Point X="21.75" Y="3.125" />
+        <Point X="23.25" Y="3.125" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IEntityMonster.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.IEntityAnimal" Collapsed="true">
+    <Position X="23.25" Y="1.75" Width="1.5" />
+    <InheritanceLine Type="MineCore.Entities.IEntityLiving" FixedFromPoint="true">
+      <Path>
+        <Point X="21.75" Y="2.875" />
+        <Point X="22.125" Y="2.875" />
+        <Point X="22.125" Y="2.096" />
+        <Point X="23.25" Y="2.096" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IEntityAnimal.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.IEntity" Collapsed="true">
+    <Position X="20.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACCCAAJAEQAEAAAQAAAEAIAAJUQAAIAAAARAAAAIA=</HashCode>
+      <FileName>Entities\IEntity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DataProperties" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MineCore.Entities.IPlayer" Collapsed="true">
+    <Position X="14" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Factories.IFactory" Collapsed="true">
+    <Position X="10.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\IFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Extensions.IExtension" Collapsed="true">
+    <Position X="12.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\IExtension.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Network.IServerList" Collapsed="true">
+    <Position X="17.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Network\IServerList.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Values.ILocation">
+    <Position X="17.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Values\ILocation.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Values.IPosition" Collapsed="true">
+    <Position X="17.25" Y="6.75" Width="1.5" />
+    <AssociationLine Name="World" Type="MineCore.Worlds.IWorld" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="17.25" Y="7.096" />
+        <Point X="14.327" Y="7.096" />
+        <Point X="14.327" Y="5.781" />
+        <Point X="11.75" Y="5.781" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Values\IPosition.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="World" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MineCore.Values.IVector3">
+    <Position X="17.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Values\IVector3.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Values.IVector2">
+    <Position X="17.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Values\IVector2.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Values.IVector3Int">
+    <Position X="20.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Values\IVector3Int.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Values.IVector2Int">
+    <Position X="20.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Values\IVector2Int.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Values.IBlockPosition3d" Collapsed="true">
+    <Position X="23.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Values\IBlockPosition3d.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Values.IBlockPosition2d" Collapsed="true">
+    <Position X="23.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Values\IBlockPosition2d.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Worlds.IWorld" Collapsed="true">
+    <Position X="10.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Worlds\IWorld.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Extensions.IExtensionPack" Collapsed="true">
+    <Position X="10.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\IExtensionPack.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Extensions.IExtensionPackDependency" Collapsed="true">
+    <Position X="14.75" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\IExtensionPackDependency.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.Attributes.IEntityAttributeDictionary" Collapsed="true">
+    <Position X="20.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAACAAAAAAAEAEAAAAAACQAAIAAAQAAAAAAAA=</HashCode>
+      <FileName>Entities\Attributes\IEntityAttributeDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.Attributes.IEntityAttribute" Collapsed="true">
+    <Position X="23.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAQAAABAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Entities\Attributes\IEntityAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.MetaDatas.IEntityDataDictionary" Collapsed="true">
+    <Position X="23.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Entities\MetaDatas\IEntityDataDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.MetaDatas.IEntityDataProperty" Collapsed="true">
+    <Position X="28.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAgAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Entities\MetaDatas\IEntityDataProperty.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.MetaDatas.IEntityDataProperty&lt;T&gt;" Collapsed="true">
+    <Position X="25.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Entities\MetaDatas\IEntityDataProperty.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Yu Gothic UI" Size="9" />
 </ClassDiagram>

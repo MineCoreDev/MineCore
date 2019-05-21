@@ -1,11 +1,10 @@
-using YamlDotNet.Serialization;
-
-namespace MineCore.Configs
+﻿namespace MineCore.Configs
 {
     public interface IConfig
     {
-        [YamlIgnore] string FileName { get; }
+        string GetFilePath();
 
-        ConfigSaveResult Save();
+        bool Save();
+        bool Backup();
     }
 }

@@ -1,25 +1,17 @@
-using System;
-using MineCore.Configs;
-using MineCore.Console;
-using NLog;
+﻿using MineCore.Configs;
+using MineCore.Extensions;
+using MineCore.Factories;
+using MineCore.Network;
+using MineCore.Worlds;
 
 namespace MineCore.Platforms
 {
     public interface IPlatform
     {
-        Logger PlatformLogger { get; }
-
-        IPlatformConfig Config { get; }
-
-        IConsole Console { get; }
-
-        PlatformState State { get; }
-
-        PlatformStartResult Start();
-
-        PlatformStopResult Stop();
-
-        void WaitForStop();
-        void WaitForStop(long timeout);
+        IConfigManager ConfigManager { get; set; }
+        INetworkManager NetworkManager { get; set; }
+        IExtensionManager ExtensionManager { get; set; }
+        IFactoryManager FactoryManager { get; set; }
+        IWorldManager WorldManager { get; set; }
     }
 }
