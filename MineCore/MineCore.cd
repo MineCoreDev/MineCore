@@ -185,7 +185,7 @@
     <Position X="20.25" Y="5.5" Width="1.5" />
     <AssociationLine Name="DataProperties" Type="MineCore.Entities.MetaDatas.IEntityDataDictionary" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="21.438" Y="6.566" />
+        <Point X="21.438" Y="6.191" />
         <Point X="21.438" Y="7.031" />
         <Point X="23.25" Y="7.031" />
       </Path>
