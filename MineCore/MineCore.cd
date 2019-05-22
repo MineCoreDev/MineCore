@@ -117,6 +117,14 @@
   </Interface>
   <Interface Name="MineCore.Entities.IEntityLiving" Collapsed="true">
     <Position X="20.25" Y="2.75" Width="1.5" />
+    <InheritanceLine Type="MineCore.Entities.IEntityContainer" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="24.75" Y="4.062" />
+        <Point X="22.099" Y="4.062" />
+        <Point X="22.099" Y="3.375" />
+        <Point X="21.75" Y="3.375" />
+      </Path>
+    </InheritanceLine>
     <AssociationLine Name="Attributes" Type="MineCore.Entities.Attributes.IEntityAttributeDictionary">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.11" Y="0.06" />
@@ -131,12 +139,11 @@
     </ShowAsAssociation>
   </Interface>
   <Interface Name="MineCore.Entities.IEntityNpc" Collapsed="true">
-    <Position X="24.75" Y="3.75" Width="1.5" />
+    <Position X="24.75" Y="2.75" Width="1.5" />
     <InheritanceLine Type="MineCore.Entities.IEntityGrowable" FixedToPoint="true">
       <Path>
-        <Point X="23.25" Y="3.441" />
-        <Point X="23.25" Y="4.125" />
-        <Point X="24.75" Y="4.125" />
+        <Point X="24" Y="3.125" />
+        <Point X="24.75" Y="3.125" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -152,19 +159,21 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="MineCore.Entities.IEntityMonster" Collapsed="true">
-    <Position X="24.75" Y="2.75" Width="1.5" />
+    <Position X="24.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\IEntityMonster.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MineCore.Entities.IEntityAnimal" Collapsed="true">
-    <Position X="24.75" Y="1.75" Width="1.5" />
+    <Position X="24.75" Y="0.75" Width="1.5" />
     <InheritanceLine Type="MineCore.Entities.IEntityGrowable" FixedToPoint="true">
       <Path>
         <Point X="23.25" Y="2.75" />
-        <Point X="23.25" Y="2.062" />
-        <Point X="24.75" Y="2.062" />
+        <Point X="23.25" Y="2.595" />
+        <Point X="24.375" Y="2.595" />
+        <Point X="24.375" Y="1.062" />
+        <Point X="24.75" Y="1.062" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -176,7 +185,7 @@
     <Position X="20.25" Y="5.5" Width="1.5" />
     <AssociationLine Name="DataProperties" Type="MineCore.Entities.MetaDatas.IEntityDataDictionary" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="21.438" Y="6.191" />
+        <Point X="21.438" Y="6.566" />
         <Point X="21.438" Y="7.031" />
         <Point X="23.25" Y="7.031" />
       </Path>
@@ -380,9 +389,9 @@
     <Position X="20.25" Y="4" Width="1.5" />
     <AssociationLine Name="LastDamageEvent" Type="MineCore.Entities.Events.IEntityDamageEvent" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="21.75" Y="4.375" />
-        <Point X="24.5" Y="4.375" />
-        <Point X="24.5" Y="5.062" />
+        <Point X="21.75" Y="4.562" />
+        <Point X="23.805" Y="4.562" />
+        <Point X="23.805" Y="5.062" />
         <Point X="28.25" Y="5.062" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
@@ -460,16 +469,19 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EAAAAIAAIAEAAAAAAAAAAAAAAAAAAAAIAAAAAAEAAAA=</HashCode>
       <FileName>BlockEntities\IBlockEntity.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MineCore.BlockEntities.IBlockEntityContainer" Collapsed="true">
-    <Position X="25.75" Y="11" Width="1.5" />
+    <Position X="25.75" Y="11.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
       <FileName>BlockEntities\IBlockEntityContainer.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Inventory" />
+    </ShowAsAssociation>
   </Interface>
   <Interface Name="MineCore.Commands.ICommand" Collapsed="true">
     <Position X="30.75" Y="4.75" Width="1.5" />
@@ -479,7 +491,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="MineCore.Components.IComponent" Collapsed="true">
-    <Position X="23.25" Y="11.75" Width="1.5" />
+    <Position X="20.25" Y="13.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\IComponent.cs</FileName>
@@ -500,6 +512,60 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\IComponentAttachable.cs</FileName>
     </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Inventories.IInventory" Collapsed="true">
+    <Position X="23.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Inventories\IInventory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Inventories.IInventoryContainer" Collapsed="true">
+    <Position X="23.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Inventories\IInventoryContainer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Inventories.IEntityInventory" Collapsed="true">
+    <Position X="26.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Inventories\IEntityInventory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Inventories.IHumanInventory" Collapsed="true">
+    <Position X="28.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Inventories\IHumanInventory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Inventories.IPlayerInventory" Collapsed="true">
+    <Position X="31.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Inventories\IPlayerInventory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MineCore.Entities.IEntityContainer" Collapsed="true">
+    <Position X="24.75" Y="3.75" Width="1.5" />
+    <AssociationLine Name="Inventory" Type="MineCore.Inventories.IEntityInventory" ManuallyRouted="true">
+      <Path>
+        <Point X="26.25" Y="4.031" />
+        <Point X="33.008" Y="4.031" />
+        <Point X="33.008" Y="11.096" />
+        <Point X="27.531" Y="11.096" />
+        <Point X="27.531" Y="14.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Entities\IEntityContainer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Inventory" />
+    </ShowAsAssociation>
   </Interface>
   <Font Name="Yu Gothic UI" Size="9" />
 </ClassDiagram>
